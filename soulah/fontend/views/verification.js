@@ -48,9 +48,9 @@ document.getElementById("form").addEventListener("submit", function(e)
 
 
 });
-/*document.getElementById("form").addEventListener("submit", function(e)
+document.getElementById("date").addEventListener("submit", function(e)
   var o;
-  var dat=document.getElementById("date");
+  var date=document.getElementById("date");
   var dateact=new Date().format('d-m-Y');
 
   if(date<dateact)
@@ -62,4 +62,4 @@ document.getElementById("form").addEventListener("submit", function(e)
     return false;}
 
 
-  )};*/
+  )};

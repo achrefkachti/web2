@@ -7,18 +7,17 @@ class couponC
 {
 	function ajouter($coupon)
 	{
-		$sql="insert into coupon (idc,nomc,valeur,dateA,dateE,etat) values (:idc,:nomc,:valeur,:dateA,:dateE,:etat)";
+		$sql="insert into coupon (nomc,valeur,dateA,dateE,etat) values (:nomc,:valeur,:dateA,:dateE,:etat)";
 		$db=config::getConnexion();
 		try
 		{
 			$req=$db->prepare($sql);
-			$idc=$coupon->getidc();
 			$nomc=$coupon->getnomc();
 			$valeur=$coupon->getvaleur();
 			$dateA=$coupon->getdateA();
 			$dateE=$coupon->getdateE();
 			$etat=$coupon->getetat();
-			$req->bindValue(':idc',$idc);
+//$req->bindValue(':idc',$idc);
 			$req->bindValue(':nomc',$nomc);
 			$req->bindValue(':valeur',$valeur);
 			$req->bindValue(':dateA',$dateA);
@@ -77,11 +76,10 @@ class couponC
 		$db = config::getConnexion();
 try{		
         $req=$db->prepare($sql);
-		$idc=$coupon->getidc();
 		$nomc=$coupon->getnomc();
         $valeur=$coupon->getvaleur();
         $dateE=$coupon->getdateE();
-		$datas = array(':idc'=>$idc,':nomc'=>$nomc,':valeur'=>$valeur,':dateE'=>$dateE);
+		$datas = array(':nomc'=>$nomc,':valeur'=>$valeur,':dateE'=>$dateE);
 		$req->bindValue(':idc',$idc);
 		$req->bindValue(':nomc',$nomc);	
 		$req->bindValue(':valeur',$valeur);

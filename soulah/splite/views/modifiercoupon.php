@@ -322,22 +322,22 @@ if (isset($_GET['idc'])){
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >ID Coupon </label>
 												<div class="col-md-9">
-												<input type="text" class="form-control" readonly onblur="verifnom(this);" id="idc" name="idc" value="<?PHP echo $idc ?>">
+												<input type="text" class="form-control" readonly onblur="verifref(this);" id="idc" name="idc" value="<?PHP echo $idc ?>">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label">Nom du Coupon </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" onblur="verifref(this);" name="nomc" id="nomc" value="<?PHP echo $nomc?>"  >
+													<input type="text" class="form-control" onblur="verifnom(this);" name="nomc" id="nomc" value="<?PHP echo $nomc?>"  >
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label" for="example-email">Pourcentage</label>
 												<div class="col-md-9">
 													<select class="form-control" name="valeur" id="valeur" value="<?PHP echo $valeur?>">
-														<option>5%</option>
-														<option>10%</option>
-														<option>15%</option>
+														<option>0.05</option>
+														<option>0.10</option>
+														<option>0.15</option>
 													
 													</select>
 												</div>
@@ -388,7 +388,7 @@ if (isset($_GET['idc'])){
 	}
 }
 if (isset($_POST['modifier'])){
-	$coupon=new coupon( $_POST['idc'],$_POST['nomc'],$_POST['valeur'],$_POST['dateE'] );
+	$coupon=new coupon( $_POST['nomc'],$_POST['valeur'],$_POST['dateE'] );
 	$couponC->modifiercoupon($coupon,$_POST['idcc']);
   echo "<META http-equiv='refresh' content='0;URL=panierBE.php'>";
 }

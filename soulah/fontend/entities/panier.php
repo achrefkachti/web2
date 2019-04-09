@@ -18,7 +18,7 @@ class panier
 		$this->quantite=$quantite;
 		$this->dateP=date("Y-m-d");
 		$this->prix=$prix;
-		$this->total=$prix * $quantite;
+		$this->total=($prix * $quantite);
 
 
 	}

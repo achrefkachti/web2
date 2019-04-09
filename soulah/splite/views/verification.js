@@ -2,17 +2,12 @@ document.getElementById("form").addEventListener("submit", function(e)
 {
 
    var erreur; 
-   var idc = document.getElementById("idc"); 
    var nomc = document.getElementById("nomc"); 
    var valeur = document.getElementById("valeur");
    var date =document.getElementById("date");
    //var dateact=new Date().format('d-m-Y');
 
-   if (!idc.value)
-   {
-      erreur="Veuillez remplir tous les champs"
-   }
-
+   
    if (!nomc.value)
    {
       erreur="Veuillez remplir tous les champs"
@@ -26,9 +21,9 @@ document.getElementById("form").addEventListener("submit", function(e)
    {
      erreur="Veuillez remplir tous les champs"
    }
-   else if(date<dateact)
+   /*else if(date<dateact)
     {erreur="nnnnnnnnnnnnnnnnnnn"}
-   
+   */
    if (erreur)
    {
       e.preventDefault(); 
@@ -38,17 +33,17 @@ document.getElementById("form").addEventListener("submit", function(e)
    }
    
 
-
+/*
     else
     {
          alert('Coupon Ajouté');
     }
 
-
+*/
 });
 /*document.getElementById("form").addEventListener("submit", function(e)
   var o;
-  var dat=document.getElementById("date");
+  var date=document.getElementById("date");
   var dateact=new Date().format('d-m-Y');
 
   if(date<dateact)

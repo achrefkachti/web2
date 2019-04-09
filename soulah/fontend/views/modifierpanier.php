@@ -391,27 +391,15 @@ if (isset($_POST['modifier'])){
 													</tbody>
 												</table>
 											</div>
-											<?php
-	
-	$couponC=new couponC();
-   ?>
+										
 											<form class="text-left  product-cart m-t-20 mb-0">
 												<div class="row">
 													<div class="col-6"><input class="productcart form-control" type="text" placeholder="Coupon Code" name="nomc"></div>
 													<div class="col-6"><input type="submit" name="apply" class="btn btn-primary btn-md"></div>
 												</div>
 											</form>
-											<?PHP
                                         
-if (isset($_POST['apply'])){
-	if (isset($_GET['nomcc'])){
-	
-	 if($result){echo"lol";}}
-	
- // echo "<META http-equiv='refresh' content='0;URL=panierBE.php'>";
-}
-?>
-										</div>
+							</div>
 									</div>
 								</div>
 								<div class="col-lg-6">

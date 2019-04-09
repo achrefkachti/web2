@@ -131,6 +131,21 @@ try{
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
+            
+        }
+	}
+	function setprix($tot)
+	{
+		$sql="UPDATE cart  Set total=:total";
+		$db = config::getConnexion();
+		try
+		{
+			$req=$db->prepare($sql);
+			$req->bindParam(':total',$tot);
+			$req->execute();
+		}
+		 catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
         }
 	}
 	
