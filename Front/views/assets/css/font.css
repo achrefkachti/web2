@@ -1,0 +1,28 @@
+#taswira
+{
+  width: 70%;
+  height: 70%;
+}
+#logo1
+{
+  position: relative;
+  vertical-align: top;
+  display: inline-block;
+width: 40%;
+left: 400px;
+top :30px;
+}
+#pub
+{
+
+-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+width: 40%;
+height: 40%;
+}
+#pub1
+{
+
+  -webkit-clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+  clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+}
