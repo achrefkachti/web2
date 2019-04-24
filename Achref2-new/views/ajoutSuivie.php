@@ -2,6 +2,9 @@
 include "../entities/suivie.php";
 include "../core/suivieC.php";
 
+
+
+
 $today = date("Y-m-d");
 
 if (strlen($_POST['cin'])!=8)
@@ -14,7 +17,7 @@ if (strlen($_POST['cin'])!=8)
 	echo "<META http-equiv='refresh' content='0;URL=ajouterSuivie.php'>";
 }
 
-else if ($_POST['dat'] < $today) {
+if ($_POST['dat'] < $today) {
 	?>
 	<script type="text/javascript">
 		alert ("Verifiez la date svp")
@@ -24,8 +27,8 @@ else if ($_POST['dat'] < $today) {
 	
 }
 
-else if (isset($_POST['cin']) and isset($_POST['exam']) and isset($_POST['remb']) and isset($_POST['dat'])){
-$suivie1=new suivie($_POST['cin'],$_POST['exam'],$_POST['remb'],$_POST['dat']);
+else if ( isset($_POST['cin']) and isset($_POST['exam']) and isset($_POST['remb']) and isset($_POST['dat'])){
+$suivie1=new suivie($_POST['id'],$_POST['cin'],$_POST['exam'],$_POST['remb'],$_POST['dat']);
 //Partie2
 /*
 var_dump($employe1);

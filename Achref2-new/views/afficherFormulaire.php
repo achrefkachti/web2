@@ -357,6 +357,7 @@ else {
                                         <div id="table" class="table-responsive table-editable">
                                             <table class="table table-bordered table-responsive-md table-striped text-center mb-0 text-nowrap">
                                                 <tr>
+                                                    <th class="text-center">ID </th>
                                                     <th class="text-center">CIN </th>
                                                     <th class="text-center">Nom</th>
                                                     <th class="text-center">Prénom</th>
@@ -376,6 +377,7 @@ else {
                                                     
                                                 ?>
                                                 <tr>
+                                                    <td class="pt-3-half"><?PHP echo $row['id']; ?></td>
                                                     <td class="pt-3-half"><?PHP echo $row['cin']; ?></td>
                                                     <td class="pt-3-half"><?PHP echo $row['nom']; ?></td>
                                                     <td class="pt-3-half"><?PHP echo $row['prenom']; ?></td>
@@ -389,7 +391,7 @@ else {
 
                                                     
                                                     <td>
-                                                        <span class="table-remove"><a href="modifierFormulaire.php?cin=<?PHP echo $row['cin']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Modifier</button></a></span>
+                                                        <span class="table-remove"><a href="modifierFormulaire.php?id=<?PHP echo $row['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Modifier</button></a></span>
                                                         <?PHP
                                                     //endwhile;
                                                     }

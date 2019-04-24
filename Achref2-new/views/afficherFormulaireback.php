@@ -17,7 +17,7 @@ if(isset($_POST['search']))
     $valueToSearch = $_POST['valueToSearch'];
     // search in all table columns
     // using concat mysql function
-    $query = "SELECT * FROM formulaire WHERE CONCAT(cin, nom, prenom, email,teleph, catg, ref, quant, demande) LIKE '%".$valueToSearch."%'";
+    $query = "SELECT * FROM formulaire WHERE CONCAT(id, cin, nom, prenom, email,teleph, catg, ref, quant, demande) LIKE '%".$valueToSearch."%'";
     $search_result = filterTable($query);
     
 }
@@ -394,6 +394,7 @@ function filterTable($query)
 											<table id="example" class="table table-bordered border-t0 key-buttons text-nowrap w-100" >
 												<thead>
 													<tr>
+														<th>ID</th>
 														<th>CIN</th>
 														<th>Nom</th>
 														<th>Prenom</th>
@@ -413,6 +414,7 @@ function filterTable($query)
 								
 											    ?>
 													<tr>
+														<td><?PHP echo $row['id']; ?></td>
 														<td><?PHP echo $row['cin']; ?></td>
 														<td><?PHP echo $row['nom']; ?></td>
 														<td><?PHP echo $row['prenom']; ?></td>

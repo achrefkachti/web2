@@ -1,5 +1,6 @@
 <?PHP
 class Formulaire{
+	private $id;
 	private $cin;
 	private $nom;
 	private $prenom;
@@ -10,7 +11,8 @@ class Formulaire{
 	private $date;
 	private $quant;
 	private $demande;
-	function __construct($cin,$nom,$prenom,$email,$teleph,$catg,$ref,$date,$quant,$demande){
+	function __construct($id,$cin,$nom,$prenom,$email,$teleph,$catg,$ref,$date,$quant,$demande){
+		$this->id=$id;
 		$this->cin=$cin;
 		$this->nom=$nom;
 		$this->prenom=$prenom;
@@ -23,7 +25,10 @@ class Formulaire{
 		$this->demande=$demande;
 	}
 	
-	function getCin(){
+	function getId(){
+		return $this->id;
+	}
+    function getCin(){
 		return $this->cin;
 	}
 	function getNom(){
@@ -55,6 +60,9 @@ class Formulaire{
 	}
 
 	
+	function setCin($cin){
+		$this->cin=$cin;
+	}
 	function setNom($nom){
 		$this->nom=$nom;
 	}

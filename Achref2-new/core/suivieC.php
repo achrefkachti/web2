@@ -2,6 +2,7 @@
 include "../config.php";
 class SuivieC {
 function afficherSuivie ($suivie){
+	    echo "id: ".$suivie->getId()."<br>";
 		echo "cin: ".$suivie->getCin()."<br>";
 		echo "exam: ".$suivie->getExam()."<br>";
 		echo "remb: ".$suivie->getRemb()."<br>";
@@ -13,18 +14,19 @@ function afficherSuivie ($suivie){
 	} */
 
 	function ajouterSuivie($suivie){
-		$sql="insert into suivie (cin,exam,remb,dat) 
-		values (:cin, :exam,:remb,:dat)";
+		$sql="insert into suivie (id,cin,exam,remb,dat) 
+		values (:id, :cin, :exam,:remb,:dat)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
-		
+
+		$id=$suivie->getId();
         $cin=$suivie->getCin();
         $exam=$suivie->getExam();
         $remb=$suivie->getRemb();
         $dat=$suivie->getDat();
         
-		
+		$req->bindValue(':id',$id);
 		$req->bindValue(':cin',$cin);
 		$req->bindValue(':exam',$exam);
 		$req->bindValue(':remb',$remb);
@@ -52,11 +54,27 @@ function afficherSuivie ($suivie){
             die('Erreur: '.$e->getMessage());
         }	
 	}
-	function supprimerSuivie($cin){
-		$sql="DELETE FROM suivie where cin= :cin";
+
+
+	function afficherall(){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From suivie inner join formulaire on suivie.id=formulaire.id";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
+
+
+	function supprimerSuivie($id){
+		$sql="DELETE FROM suivie where id= :id";
 		$db = config::getConnexion();
         $req=$db->prepare($sql);
-		$req->bindValue(':cin',$cin);
+		$req->bindValue(':id',$id);
 		try{
             $req->execute();
            // header('Location: index.php');
@@ -66,19 +84,21 @@ function afficherSuivie ($suivie){
         }
 	}
 	
-	function modifierSuivie($suivie,$cin){
-		$sql="UPDATE suivie SET exam=:exam, remb=:remb, dat=:dat WHERE cin=:cin";
+	function modifierSuivie($suivie,$id){
+		$sql="UPDATE suivie SET cin=:cin, exam=:exam, remb=:remb, dat=:dat WHERE id=:id";
 		
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 try{		
         $req=$db->prepare($sql);
+        $id=$suivie->getId();
 		$cin=$suivie->getCin();
         $exam=$suivie->getExam();
         $remb=$suivie->getRemb();
         $dat=$suivie->getDat();
-		$datas = array(':cin'=>$cin, ':exam'=>$exam,':remb'=>$remb,':dat'=>$dat);
+		$datas = array(':id'=>$id, ':cin'=>$cin, ':exam'=>$exam,':remb'=>$remb,':dat'=>$dat);
 		//$req->bindValue(':cinn',$cinn);
+		$req->bindValue(':id',$id);
 		$req->bindValue(':cin',$cin);
 		$req->bindValue(':exam',$exam);
 		$req->bindValue(':remb',$remb);
@@ -100,7 +120,7 @@ try{
 
  function triersuivie(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SElECT * From suivie ORDER BY cin DESC";
+		$sql="SElECT * From suivie ORDER BY id DESC";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -115,8 +135,8 @@ try{
 
 
    
-	function recupererSuivie($cin){
-		$sql="SELECT * from suivie where cin=$cin";
+	function recupererSuivie($id){
+		$sql="SELECT * from suivie where id=$id";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);

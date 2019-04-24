@@ -16,7 +16,7 @@ if(isset($_POST['search']))
     $valueToSearch = $_POST['valueToSearch'];
     // search in all table columns
     // using concat mysql function
-    $query = "SELECT * FROM suivie WHERE CONCAT(cin, exam, remb) LIKE '%".$valueToSearch."%'";
+    $query = "SELECT * FROM suivie WHERE CONCAT(id, cin, exam, remb) LIKE '%".$valueToSearch."%'";
     $search_result = filterTable($query);
     
 }
@@ -336,6 +336,7 @@ else {
 										<div id="table" class="table-responsive table-editable">
 											<table class="table table-bordered table-responsive-md table-striped text-center mb-0 text-nowrap">
 												<tr>
+													<th class="text-center">ID </th>
 													<th class="text-center">CIN </th>
 													<th class="text-center">Type d'Examen</th>
 													<th class="text-center">Type de Remboursement</th>
@@ -346,7 +347,7 @@ else {
                                                  
 											    ?>
 												<tr>
-													
+													<td class="pt-3-half"><?PHP echo $row['id']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['cin']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['exam']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['remb']; ?></td>

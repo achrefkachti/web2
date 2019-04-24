@@ -365,6 +365,7 @@ $listeFormulaires=$formulaire1C->rechercherdates($_GET['date1'],$_GET['date2']);
 											<table id="example" class="table table-bordered border-t0 key-buttons text-nowrap w-100" >
 												<thead>
 													<tr>
+														<th>ID</th>
 														<th>CIN</th>
 														<th>Nom</th>
 														<th>Prenom</th>
@@ -386,6 +387,7 @@ $listeFormulaires=$formulaire1C->rechercherdates($_GET['date1'],$_GET['date2']);
 								
 											    ?>
 													<tr>
+														<td><?PHP echo $row['id']; ?></td>
 														<td><?PHP echo $row['cin']; ?></td>
 														<td><?PHP echo $row['nom']; ?></td>
 														<td><?PHP echo $row['prenom']; ?></td>

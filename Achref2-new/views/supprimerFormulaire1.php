@@ -292,9 +292,9 @@ else {
 
                       
                       <div class="form-group row">
-                        <label for="inputName" class="col-md-3 col-form-label">CIN</label>
+                        <label for="inputName" class="col-md-3 col-form-label">ID</label>
                         <div class="col-md-9">
-                          <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" required>
+                          <input type="number" class="form-control" id="Id" placeholder="Id" name="id" required>
                         </div>
                       </div>
 

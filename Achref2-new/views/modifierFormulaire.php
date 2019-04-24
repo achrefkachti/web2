@@ -296,11 +296,12 @@ else {
                   	
                   	<?PHP
 
-if (isset($_GET['cin'])){
+if (isset($_GET['id'])){
 	$formulaireC=new FormulaireC();
-    $result=$formulaireC->recupererFormulaire($_GET['cin']);
+    $result=$formulaireC->recupererFormulaire($_GET['id']);
     
 foreach($result as $row){
+
 		$cin=$row['cin'];
 		$nom=$row['nom'];
 		$prenom=$row['prenom'];
@@ -315,12 +316,20 @@ foreach($result as $row){
 ?>
                     <form class="form-horizontal" method="POST" >
 
-                      
+                      <div class="form-group row">
+                        <label for="inputName" class="col-md-3 col-form-label">ID</label>
+                        <div class="col-md-9">
+                          <input type="number" class="form-control" id="Id" placeholder="Id" name="id" 
+                           value="<?PHP echo $_GET['id'] ?>" readonly>
+                        </div>
+                      </div>
+
+
                       <div class="form-group row">
                         <label for="inputName" class="col-md-3 col-form-label">CIN</label>
                         <div class="col-md-9">
                           <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" 
-                           value="<?PHP echo $_GET['cin'] ?>" readonly>
+                           value="<?PHP echo $cin ?>" required>
                         </div>
                       </div>
 
@@ -348,7 +357,7 @@ foreach($result as $row){
                         <label for="exampleInputEmail2" class="col-md-3 col-form-label">Email</label>
                         <div class="col-md-9">
                           <input type="email" class="form-control" id="Email"  placeholder="Nouveau Email" name="email" 
-                           onblur="verifMail(this)"  value="<?PHP echo $email?>" required>
+                           onblur="verifMail(this)"  value="<?PHP echo $email?>" readonly>
                         </div>
                       </div>
 
@@ -413,7 +422,7 @@ foreach($result as $row){
 
                       <div class="form-group row mb-0">
                         <div class="col-md-9">
-                          <input class="form-control" type="hidden"  id="Quant" name="cin_ini" value="<?php echo $_GET['cin']; ?>">
+                          <input class="form-control" type="hidden"  id="Quant" name="id_ini" value="<?php echo $_GET['id']; ?>">
                         </div>
                       </div>
 
@@ -429,8 +438,8 @@ foreach($result as $row){
 							}
 						}
 if (isset($_POST['modifier'])){
-	$formulaire=new formulaire( $_POST['cin'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['teleph'],$_POST['catg'],$_POST['ref'],$_POST['date'],$_POST['quant'],$_POST['demande'] );
-	$formulaireC->modifierFormulaire($formulaire,$_POST['cin_ini']);
+	$formulaire=new formulaire($_POST['id'], $_POST['cin'],$_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['teleph'],$_POST['catg'],$_POST['ref'],$_POST['date'],$_POST['quant'],$_POST['demande'] );
+	$formulaireC->modifierFormulaire($formulaire,$_POST['id_ini']);
     echo "<META http-equiv='refresh' content='0;URL=ajouterFormulaire.php'>";
 }
 ?>

@@ -2,6 +2,7 @@
 include "../config2.php";
 class FormulaireC {
 function afficherFormulaire ($formulaire){
+	    echo "id: ".$formulaire->getId()."<br>";
 		echo "cin: ".$formulaire->getCin()."<br>";
 		echo "nom: ".$formulaire->getNom()."<br>";
 		echo "prenom: ".$formulaire->getPrenom()."<br>";
@@ -120,11 +121,11 @@ function afficherFormulaire ($formulaire){
 	
 
 	
-	function supprimerFormulaire($cin){
-		$sql="DELETE FROM formulaire where cin= :cin";
+	function supprimerFormulaire($id){
+		$sql="DELETE FROM formulaire where id= :id";
 		$db = config2::getConnexion();
         $req=$db->prepare($sql);
-		$req->bindValue(':cin',$cin);
+		$req->bindValue(':id',$id);
 		try{
             $req->execute();
            // header('Location: index.php');
@@ -137,14 +138,15 @@ function afficherFormulaire ($formulaire){
 
 
 
-	function modifierFormulaire($formulaire,$cin){
-		$sql="UPDATE formulaire SET cin=:cinn, nom=:nom, prenom=:prenom, email=:email, teleph=:teleph, catg=:catg, ref=:ref, date=:date, quant=:quant, demande=:demande WHERE cin=:cin";
+	function modifierFormulaire($formulaire,$id){
+		$sql="UPDATE formulaire SET id=:idd, cin=:cin, nom=:nom, prenom=:prenom, email=:email, teleph=:teleph, catg=:catg, ref=:ref, date=:date, quant=:quant, demande=:demande WHERE id=:id";
 		
 		$db = config2::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 try{		
         $req=$db->prepare($sql);
-		$cinn=$formulaire->getCin();
+        $idd=$formulaire->getId();
+		$cin=$formulaire->getCin();
         $nom=$formulaire->getNom();
         $prenom=$formulaire->getPrenom();
         $email=$formulaire->getEmail();
@@ -154,9 +156,10 @@ try{
         $date=$formulaire->getDate();
         $quant=$formulaire->getQuantite();
         $demande=$formulaire->getDemande();
-		$datas = array(':cinn'=>$cinn, ':cin'=>$cin, ':nom'=>$nom,':prenom'=>$prenom,':email'=>$email,':teleph'=>$teleph,':catg'=>$catg,
+		$datas = array(':idd'=>$idd, ':id'=>$id, ':cin'=>$cin, ':nom'=>$nom,':prenom'=>$prenom,':email'=>$email,':teleph'=>$teleph,':catg'=>$catg,
 			':ref'=>$ref,':date'=>$date,':quant'=>$quant,':demande'=>$demande);
-		$req->bindValue(':cinn',$cinn);
+		$req->bindValue(':idd',$idd);
+		$req->bindValue(':id',$id);
 		$req->bindValue(':cin',$cin);
 		$req->bindValue(':nom',$nom);
 		$req->bindValue(':prenom',$prenom);
@@ -180,8 +183,8 @@ try{
         }
 		
 	}
-	function recupererFormulaire($cin){
-		$sql="SELECT * from formulaire where cin=$cin";
+	function recupererFormulaire($id){
+		$sql="SELECT * from formulaire where id=$id";
 		$db = config2::getConnexion();
 		try{
 		$liste=$db->query($sql);

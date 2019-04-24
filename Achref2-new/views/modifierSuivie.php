@@ -302,11 +302,12 @@ include "../core/suivieC.php";
 
                   	<?PHP
 
-if (isset($_GET['cin'])){
+if (isset($_GET['id'])){
 	$suivieC=new SuivieC();
-    $result=$suivieC->recupererSuivie($_GET['cin']);
+    $result=$suivieC->recupererSuivie($_GET['id']);
     
 foreach($result as $row){
+	    $id=$row['id'];
 		$cin=$row['cin'];
 		$exam=$row['exam'];
 		$remb=$row['remb'];
@@ -324,10 +325,19 @@ foreach($result as $row){
 
                       
                       <div class="form-group row">
+                        <label for="inputName" class="col-md-3 col-form-label">ID</label>
+                        <div class="col-md-9">
+                          <input type="number" class="form-control" id="Id" placeholder="Id" name="id" 
+                           value="<?PHP echo $_GET['id'] ?>"  readonly>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group row">
                         <label for="inputName" class="col-md-3 col-form-label">CIN</label>
                         <div class="col-md-9">
                           <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" 
-                           value="<?PHP echo $_GET['cin'] ?>"  readonly>
+                           value="<?PHP echo $cin ?>"  required>
                         </div>
                       </div>
 
@@ -337,7 +347,7 @@ foreach($result as $row){
                       <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="example-email">Type d'Examen</label>
                         <div class="col-md-9" >
-                          <select class="form-control" id="Exam" name="exam" value="<?PHP echo $exam ?>">
+                          <select class="form-control" id="Exam" name="exam" value="<?PHP echo $exam ?>" required>
                             <option>Negatif</option>
                             <option>Positif</option>
                             <option>Pas encore</option>
@@ -350,7 +360,7 @@ foreach($result as $row){
                       <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="example-email">Type de Remboursement</label>
                         <div class="col-md-9" >
-                          <select class="form-control" id="Remb" name="remb" value="<?PHP echo $remb ?>">
+                          <select class="form-control" id="Remb" name="remb" value="<?PHP echo $remb ?>" required>
                             <option>Reparation</option>
                             <option>Bon d'achats</option>
                             <option>Viremment</option>
@@ -366,7 +376,7 @@ foreach($result as $row){
                       <div class="form-group row">
                         <label class="col-md-3 col-form-label">Date de retour</label>
                         <div class="col-md-9">
-                          <input class="form-control" type="date" id="myDate" name="dat" value="<?PHP echo $dat ?>">
+                          <input class="form-control" type="date" id="myDate" name="dat" value="<?PHP echo $dat ?>" required>
                         </div>
                       </div>
                    
@@ -376,7 +386,7 @@ foreach($result as $row){
 
                         <div class="form-group row mb-0">
                         <div class="col-md-9">
-                          <input class="form-control" type="hidden"  name="cin_ini" value="<?php echo $_GET['cin']; ?>">
+                          <input class="form-control" type="hidden"  name="id_ini" value="<?php echo $_GET['id']; ?>">
                         </div>
                       </div>
 
@@ -388,8 +398,8 @@ foreach($result as $row){
 							}
 						}
 if (isset($_POST['modifier'])){
-	$suivie=new suivie( $_POST['cin'],$_POST['exam'],$_POST['remb'],$_POST['dat']);
-	$suivieC->modifierSuivie($suivie,$_POST['cin_ini']);
+	$suivie=new suivie( $_POST['id'], $_POST['cin'],$_POST['exam'],$_POST['remb'],$_POST['dat']);
+	$suivieC->modifierSuivie($suivie,$_POST['id_ini']);
   echo "<META http-equiv='refresh' content='0;URL=ajouterSuivie.php'>";
 }
 ?>

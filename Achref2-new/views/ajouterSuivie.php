@@ -3,6 +3,7 @@
 include "../core/suivieC.php";
 $suivie1C=new SuivieC();
 $listeSuivies=$suivie1C->afficherSuivies();
+$listeSuivies=$suivie1C->afficherall();
 
 include "../core/formulaireC.php";
 $formulaire1C=new FormulaireC();
@@ -349,22 +350,35 @@ function executeQuery($query)
                   <div class="card-body">
                     <form class="form-horizontal" method="POST" action="ajoutSuivie.php">
 
-                      
+
+
                       <div class="form-group row">
-                        <label for="inputName" class="col-md-3 col-form-label">CIN</label>
+                        <label for="inputName" class="col-md-3 col-form-label">ID</label>
                         <div class="col-md-9">
-                          <select class="form-control" id="Cin" name="cin">
+                          <select class="form-control" id="Id" name="id">
                           	
 								<?PHP
 								foreach($listeFormulaires as $row){
 								?>
-							<option value="<?PHP echo $row['cin']; ?>"><?PHP echo $row['cin']; ?>
+							<option value="<?PHP echo $row['id']; ?>"><?PHP echo $row['id']; ?>
 							</option>
 								<?PHP } ?>
 								</select>
                      <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
                         </div>
+                      </div>	
+
+                      
+                      <div class="form-group row">
+                        <label for="inputName" class="col-md-3 col-form-label">CIN</label>
+                        <div class="col-md-9">
+                         <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" maxlength="8" required>
+								
+                     <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
+                        </div>
                       </div>
+
+                   
 
 
                       
@@ -429,6 +443,7 @@ function executeQuery($query)
 										<div id="table" class="table-responsive table-editable">
 											<table class="table table-bordered table-responsive-md table-striped text-center mb-0 text-nowrap">
 												<tr>
+													<th class="text-center">ID </th>
 													<th class="text-center">CIN </th>
 													<th class="text-center">Type d'Examen</th>
 													<th class="text-center">Type de Remboursement</th>
@@ -439,13 +454,14 @@ function executeQuery($query)
                                                   while ($row = mysqli_fetch_array($result)):
 											    ?>
 												<tr>
+													<td class="pt-3-half"><?PHP echo $row['id']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['cin']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['exam']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['remb']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['dat']; ?></td>
 											       
 													<td>	
-														<span class="table-remove"><a href="modifierSuivie.php?cin=<?PHP echo $row['cin']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Modifier</button></a></span>
+														<span class="table-remove"><a href="modifierSuivie.php?id=<?PHP echo $row['id']; ?>"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Modifier</button></a></span>
 														<?PHP endwhile;
 
                                                     

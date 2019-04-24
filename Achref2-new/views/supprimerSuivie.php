@@ -1,8 +1,8 @@
 <?PHP
 include "../core/suivieC.php";
 $suivieC=new SuivieC();
-if (isset($_POST["cin"])){
-	$suivieC->supprimerSuivie($_POST["cin"]);
+if (isset($_POST["id"])){
+	$suivieC->supprimerSuivie($_POST["id"]);
 	//header('Location: ajouterSuivie.php');
 	
 	?>
