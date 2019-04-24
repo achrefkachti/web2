@@ -1,5 +1,5 @@
 <?PHP
-include "../config.php";
+include "../config3.php";
 class ProduitC {
 function afficherProduit ($produit){
 		echo "Nom: ".$produit->getNom()."<br>";
@@ -14,7 +14,7 @@ function afficherProduit ($produit){
 
 	function ajouterProduit($produit){
 		$sql="insert into produit(nom,refe,couleur,quantite,prix) values (:nom, :refe,:couleur,:quantite,:prix)";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
         $req=$db->prepare($sql);
 		
@@ -43,7 +43,7 @@ function afficherProduit ($produit){
 	function afficherProduits(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SELECT * From produit ";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -58,7 +58,7 @@ function afficherProduit ($produit){
 	function afficherProduits2(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SELECT * From produit ORDER BY refe";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -71,7 +71,7 @@ function afficherProduit ($produit){
 	function affichercom(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SELECT * From commentaires ORDER BY id";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -84,7 +84,7 @@ function afficherProduit ($produit){
 	function afficherProduits3(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SELECT * From produit ORDER BY refe DESC";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -96,7 +96,7 @@ function afficherProduit ($produit){
 	function afficherProduits4(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SELECT * From produit where type= 'velo'";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -109,7 +109,7 @@ function afficherProduit ($produit){
 function afficherProduits5(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SELECT * From produit where type= 'scooter'";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -123,7 +123,7 @@ function afficherProduits5(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		
 		$sql="SELECT * From produit where type='scooter' || type='velo'";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -136,7 +136,7 @@ function afficherProduits5(){
 		function afficherProduits7(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SELECT * From produit where type= 'accesoires'";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -149,7 +149,7 @@ function afficherProduits5(){
 function afficherProduits8(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SELECT * From produit where couleur= :couleur";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -162,7 +162,7 @@ function afficherProduits8(){
 
 	function supprimerProduit($refe){
 		$sql="DELETE FROM produit where refe= :refe";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
         $req=$db->prepare($sql);
 		$req->bindValue(':refe',$refe);
 		try{
@@ -176,7 +176,7 @@ function afficherProduits8(){
 	function modifierProduit($produit,$refe){
 		$sql="UPDATE produit SET  nom=:nom, refe=:refee,couleur=:couleur,quantite=:quantite ,prix=:prix WHERE refe=:refe";
 		
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 try{		
         $req=$db->prepare($sql);
@@ -209,7 +209,7 @@ try{
 	}
 	function recupererProduit($refe){
 		$sql="SELECT * from produit where refe=$refe";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;
@@ -221,7 +221,7 @@ try{
 	
 	function rechercherListeProduit($quantite){
 		$sql="SELECT * from produit where prix=$prix";
-		$db = config::getConnexion();
+		$db = config3::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;

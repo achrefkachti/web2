@@ -48,7 +48,7 @@ function filterTable($query)
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
     
     <!-- CSS
-	============================================ -->
+	============================================ -->php
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -119,7 +119,7 @@ function filterTable($query)
                 <div class="col mt-15 mb-15">
                     <!-- Logo Start -->
                     <div class="header-logo">
-                        <a href="index.html">
+                        <a href="index.php">
                           <img id="logo1" src="assets/images/log.png" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
@@ -134,7 +134,7 @@ function filterTable($query)
                         <nav>
                             <ul>
 
-                                <li class="active"><a href="index.html">HOME</a>
+                                <li class="active"><a href="index.php">HOME</a>
                                    
                                 </li>
                                 <li class="menu-item-has-children"><a href="shop.php">Shop</a>

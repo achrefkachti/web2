@@ -14,7 +14,7 @@ $panierC=new panierC();
 $listepanier=$panierC->afficherprod();
 
 $tot=0;
- $extot=0
+ $extot=0;
 $produit1C=new produitC();
 $listeProduits=$produit1C->afficherProduits();
 $_SESSION['id']="3";
@@ -108,7 +108,7 @@ $_SESSION['username']="soulah";
                 <div class="col mt-15 mb-15">
                     <!-- Logo Start -->
                     <div class="header-logo">
-                        <a href="index.html">
+                        <a href="index.php">
                           <img id="logo1" src="assets/images/log.png" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
@@ -123,7 +123,7 @@ $_SESSION['username']="soulah";
                         <nav>
                             <ul>
 
-                                <li class="active"><a href="index.html">HOME</a>
+                                <li class="active"><a href="index.php">HOME</a>
                                    
                                 </li>
                                 <li class="menu-item-has-children"><a href="shop.php">Shop</a>

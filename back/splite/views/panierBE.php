@@ -8,13 +8,19 @@ include "../core/transC.php";
 
 $couponC=new couponC();
 $listecoupon=$couponC->affichercoupon();
-$stat=$couponC->stat();
 $panierC=new panierC();
 $listepanier=$panierC->afficherprod();
 
 $transC=new transC();
 $listeTran=$transC->afficherT();
+$aloha=$transC->stat();
 $tot=0;
+$dbhandle =new mysqli('localhost','root','','web');
+echo $dbhandle->connect_error;
+
+$query ="SELECT valeur,count(etat) FROM coupon group by valeur";
+$res=$dbhandle->query($query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +53,72 @@ $tot=0;
 
     <!--Morris css-->
     <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+
+
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+             ['valuer', 'Somme'],
+               <?php
+          while($row=$res->fetch_assoc())
+          {
+            
+          echo "['".$row['valeur']."', '".$row['count(etat)']."'],";
+          }
+
+          ?>
+
+       
+        ]);
+
+        var options = {
+            title: 'My Daily Activities',
+          pieHole: 100,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+   
+
+          <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Opening Move', 'Percentage'],
+           <?php
+        foreach ($aloha as $key ) {
+       echo "['".$key['nomcl']."', '".$key['total']."'],";
+                    }
+          ?>
+      
+        ]);
+
+        var options = {
+          title: 'Chess opening moves',
+          width: 900,
+          legend: { position: 'none' },
+          chart: { title: 'Chess opening moves',
+                   subtitle: 'popularity by percentage' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "50%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('what'));
+        chart.draw(data, options);
+      };
+    </script>
 
 </head>
 
@@ -488,54 +560,43 @@ $tot=0;
                     </div>
 
                                 <!--charts opened-->
-
+<div class="row row-deck">
 <div class="col-12 col-md-12 col-lg-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Bar Chart</h4>
-                                    </div>
-                                    <div class="card-body">
-                                       <div id="chart_bar" class="overflow-hidden">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+    <div class="card">
+        <div class="card-header">
+            <h4>Bar Chart</h4>
+        </div>
+        <div class="card-body">
+            <div id="chart_bar" class="overflow-hidden">
+              
+                <div id="donutchart" style="width: 500px; height: 500px;"></div>
 
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Pourcentage','DateE'],
-
-
-        ]);
-
-        var options = {
-          title: 'Coupon par Pourcentage'
-        };
-
-        <?php foreach ($listeTran as $key ){
-             echo "['".$key['valeur']."',".$key['dateE']."],";
-        } ?>
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-        <div id="piechart" style="width: 500px; height: 500px;"></div>
-
+            </div>
+        </div>
     </div>
 </div>
+
+<div class="col-12 col-md-6 col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4> Donut Chart</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="chart_bar" class="overflow-hidden">
+              
+                <div id="what" style="width: 200px; height: 200px;">
+                     
+                </div>
+
+            </div>
+                                       
                                     </div>
                                 </div>
                             </div>
-            <!--charts closed-->
 
+</div>
 
-
-
-
-                </section>
-            </div>
+         
             <!--app-content closed-->
 
             <footer class="main-footer">

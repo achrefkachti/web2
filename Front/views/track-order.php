@@ -1,3 +1,27 @@
+<?PHP
+session_start();
+include '../entities/produit.php';
+include "../core/produitC.php";
+include "../entities/panier.php";
+include "../core/panierC.php";
+include "../entities/coupon.php";
+include "../core/couponC.php";
+include "../core/transC.php";
+
+
+
+$panierC=new panierC();
+$listepanier=$panierC->afficherprod();
+
+$tot=0;
+ $extot=0;
+$produit1C=new produitC();
+$listeProduits=$produit1C->afficherProduits();
+$_SESSION['id']="3";
+$_SESSION['username']="soulah";
+//var_dump($listeEmployes->fetchAll());
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -48,7 +72,7 @@
                 <div class="col mt-10 mb-10">
                     <!-- Header Links Start -->
                     <div class="header-links">
-                        <a href="track-order.html"><img src="assets/images/icons/car.png" alt="Car Icon"> <span>Track your order</span></a>
+                        <a href="checkout.php"><img src="assets/images/icons/car.png" alt="Car Icon"> <span>Track your order</span></a>
                         <a href="store.html"><img src="assets/images/icons/marker.png" alt="Car Icon"> <span>Locate Store</span></a>
                     </div><!-- Header Links End -->
                 </div>
@@ -59,15 +83,7 @@
 
                         <form action="#">
                             <div class="input"><input type="text" placeholder="Search your product"></div>
-                            <div class="select">
-                                <select class="nice-select">
-                                    <option>All Categories</option>
-                                    <option>Mobile</option>
-                                    <option>Computer</option>
-                                    <option>Laptop</option>
-                                    <option>Camera</option>
-                                </select>
-                            </div>
+                            
                             <div class="submit"><button><i class="icofont icofont-search-alt-1"></i></button></div>
                         </form>
 
@@ -94,120 +110,53 @@
                 <div class="col mt-15 mb-15">
                     <!-- Logo Start -->
                     <div class="header-logo">
-                        <a href="index.html">
-                            <img src="assets/images/l.png" alt="Ariana-scooters">
-                            <img class="theme-dark" src="assets/images/l.png" alt="Ariana-scooters">
+                        <a href="index.php">
+                          <img id="logo1" src="assets/images/log.png" alt="Ariana Scooters">
+
+                      <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>
                     </div><!-- Logo End -->
                 </div>
 
                 <div class="col order-12 order-lg-2 order-xl-2 d-none d-lg-block">
                     <!-- Main Menu Start -->
+
                     <div class="main-menu">
                         <nav>
                             <ul>
-                                <li class="menu-item-has-children"><a href="index.html">HOME</a>
-                                    <ul class="mega-menu two-column">
-                                        <li><a href="#" class="d-none">Home Light</a>
-                                            <ul>
-                                                <li><a href="index.html">Home One Light</a></li>
-                                                <li><a href="index-2.html">Home Two Light</a></li>
-                                                <li><a href="index-3.html">Home Three Light</a></li>
-                                                <li><a href="index-4.html">Home Four Light</a></li>
-                                                <li><a href="index-5.html">Home Five Light</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#" class="d-none">Home Dark</a>
-                                            <ul>
-                                                <li><a href="index.html">Home One Dark</a></li>
-                                                <li><a href="index-2.html">Home Two Dark</a></li>
-                                                <li><a href="index-3.html">Home Three Dark</a></li>
-                                                <li><a href="index-4.html">Home Four Dark</a></li>
-                                                <li><a href="index-5.html">Home Five Dark</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+
+                                <li class="active"><a href="index.php">HOME</a>
+                                   
                                 </li>
-                                <li class="menu-item-has-children"><a href="shop-grid.html">Shop</a>
+                                <li class="menu-item-has-children"><a href="shop.php">Shop</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item-has-children"><a href="shop-grid.html">shop grid</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop-grid.html">shop grid</a></li>
-                                                <li><a href="shop-grid-left-sidebar.html">shop grid Left Sidebar</a></li>
-                                                <li><a href="shop-grid-right-sidebar.html">shop grid Right Sidebar</a></li>
-                                                <li><a href="shop-grid-extended.html">shop grid Extended</a></li>
-                                            </ul>
+                                        <li class=""><a href="scooter.php">Scooter</a>
+                                     
                                         </li>
-                                        <li class="menu-item-has-children"><a href="shop-list.html">shop List</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop-list.html">shop List</a></li>
-                                                <li><a href="shop-list-left-sidebar.html">shop List Left Sidebar</a></li>
-                                                <li><a href="shop-list-right-sidebar.html">shop List Right Sidebar</a></li>
-                                            </ul>
+                                        <li class=""><a href="velo.php">Velo</a>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="category-1.html">shop Category</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="category-1.html">Shop Category 1</a></li>
-                                                <li><a href="category-2.html">Shop Category 2</a></li>
-                                                <li><a href="category-3.html">Shop Category 3</a></li>
-                                            </ul>
+                                        <li class=""><a href="accessories.php">Accessoires</a>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="single-product.html">Single Product</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="single-product.html">Single Product 1</a></li>
-                                                <li><a href="single-product-2.html">Single Product 2</a></li>
-                                                <li><a href="single-product-3.html">Single Product 3</a></li>
-                                                <li><a href="single-product-4.html">Single Product 4</a></li>
-                                                <li><a href="single-product-5.html">Single Product 5</a></li>
-                                            </ul>
-                                        </li>
+                                        
+                                        
                                     </ul>
                                 </li>
-                                <li class="active menu-item-has-children"><a href="#">PAGES</a>
-                                    <ul class="mega-menu three-column">
+                                <li class="menu-item-has-children"><a href="#">EVENEMENTS</a>
+                                    <ul class="sub-menu">
                                         <li><a href="#">Column One</a>
                                             <ul>
                                                 <li><a href="about-us.html">About us</a></li>
                                                 <li><a href="banner.html">Banner</a></li>
-                                                <li><a href="best-deals.html">Best Deals</a></li>
-                                                <li><a href="buttons.html">Buttons</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="clients.html">Clients</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Column Two</a>
-                                            <ul>
-                                                <li><a href="compare.html">Compare</a></li>
-                                                <li><a href="faq.html">Faq</a></li>
-                                                <li><a href="feature.html">Feature</a></li>
-                                                <li><a href="login.html">Login</a></li>
-                                                <li><a href="register.html">Register</a></li>
-                                                <li><a href="store.html">Store</a></li>
-                                                <li><a href="tabs.html">Tabs</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Column Three</a>
-                                            <ul>
-                                                <li><a href="team.html">Team</a></li>
-                                                <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                                                <li><a href="testimonial.html">Testimonial</a></li>
-                                                <li class="active"><a href="track-order.html">Track Order</a></li>
-                                                <li><a href="typography.html">Typography</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children"><a href="blog-3-column.html">BLOG</a>
+                                <li class="menu-item-has-children"><a href="blog-3-column.html">SAV</a>
                                     <ul class="sub-menu">
-                                        <li><a href="blog-1-column-left-sidebar.html">Blog 1 Column Left Sidebar</a></li>
-                                        <li><a href="blog-1-column-right-sidebar.html">Blog 1 Column Right Sidebar</a></li>
-                                        <li><a href="blog-2-column-left-sidebar.html">Blog 2 Column Left Sidebar</a></li>
-                                        <li><a href="blog-2-column-right-sidebar.html">Blog 2 Column Right Sidebar</a></li>
-                                        <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                        <li><a href="single-blog-left-sidebar.html">Single Blog Left Sidebar</a></li>
-                                        <li><a href="single-blog-right-sidebar.html">Single Blog Right Sidebar</a></li>
+                                        <li><a href="blog-1-column-left-sidebar.html">Politique de retour</a></li>
+                                        <li><a href="blog-1-column-right-sidebar.html">Ajouter Formulaire</a></li>
+                                        <li><a href="blog-2-column-left-sidebar.html">Supprimer Formulaire</a></li>
+                                        <li><a href="blog-2-column-right-sidebar.html">Afficher vos Suivies</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="contact.html">CONTACT</a></li>
@@ -221,11 +170,10 @@
                     <div class="header-shop-links">
 
                         <!-- Compare -->
-                        <a href="compare.html" class="header-compare"><i class="ti-control-shuffle"></i></a>
                         <!-- Wishlist -->
-                        <a href="wishlist.html" class="header-wishlist"><i class="ti-heart"></i> <span class="number">3</span></a>
+                        <a href="wishlist.php" class="header-wishlist"><i class="ti-heart"></i> </a>
                         <!-- Cart -->
-                        <a href="cart.html" class="header-cart"><i class="ti-shopping-cart"></i> <span class="number">3</span></a>
+                        <a href="cart.php" class="header-cart"><i class="ti-shopping-cart"></i></a>
 
                     </div><!-- Header Shop Links End -->
                 </div>
@@ -237,61 +185,58 @@
         </div>
     </div><!-- Header Bottom End -->
 
+    <!-- Header Category Start -->
+  
 </div><!-- Header Section End -->
 
 <!-- Mini Cart Wrap Start -->
 <div class="mini-cart-wrap">
 
     <!-- Mini Cart Top -->
-    <div class="mini-cart-top">
-
+    <div class="mini-cart-top">    
+      
         <button class="close-cart">Close Cart<i class="icofont icofont-close"></i></button>
-
+        
     </div>
 
     <!-- Mini Cart Products -->
     <ul class="mini-cart-products">
+        <?php 
+
+                                                    foreach( $listepanier as $row )
+                                                        { 
+        
+                                                            ?>
         <li>
-            <a class="image"><img src="assets/images/product/product-1.png" alt="Product"></a>
+            <a class="image"><img src="<?php echo $row['img']; ?>" alt="Product"></a>
             <div class="content">
-                <a href="single-product.html" class="title">Waxon Note Book Pro 5</a>
-                <span class="price">Price: $295</span>
-                <span class="qty">Qty: 02</span>
+                <a href="single-product.html" class="title"><?php echo $row['nomprod']; ?></a>
+                <span class="price"> <?php echo $row['prix']; ?> </span>
+                <span class="qty"><?php echo $row['quantite']; ?></span>
             </div>
             <button class="remove"><i class="fa fa-trash-o"></i></button>
         </li>
-        <li>
-            <a class="image"><img src="assets/images/product/product-2.png" alt="Product"></a>
-            <div class="content">
-                <a href="single-product.html" class="title">Aquet Drone D 420</a>
-                <span class="price">Price: $275</span>
-                <span class="qty">Qty: 01</span>
-            </div>
-            <button class="remove"><i class="fa fa-trash-o"></i></button>
-        </li>
-        <li>
-            <a class="image"><img src="assets/images/product/product-3.png" alt="Product"></a>
-            <div class="content">
-                <a href="single-product.html" class="title">Game Station X 22</a>
-                <span class="price">Price: $295</span>
-                <span class="qty">Qty: 01</span>
-            </div>
-            <button class="remove"><i class="fa fa-trash-o"></i></button>
-        </li>
+        <?php
+                                                            $tot+=$row['total'];
+                                                          }
+                                            ?>
     </ul>
 
     <!-- Mini Cart Bottom -->
-    <div class="mini-cart-bottom">
-
-        <h4 class="sub-total">Total: <span>$1160</span></h4>
+    <div class="mini-cart-bottom">    
+    
+        <h4 class="sub-total">Total: <span><?php echo $tot."DT"; ?></span></h4>
 
         <div class="button">
-            <a href="checkout.html">CHECK OUT</a>
+            <a href="checkout.php">CHECK OUT</a>
         </div>
+         <div class="button">
+            <a href="cart.php">CART</a>
+        </div>
+        
+    </div>     
 
-    </div>
-
-</div><!-- Mini Cart Wrap End -->
+</div><!-- Mini Cart Wrap End --> 
 
 <!-- Cart Overlay -->
 <div class="cart-overlay"></div>

@@ -55,4 +55,17 @@ return 1;
 			echo 'Erreur' .$e->getMessage();
 		}
 	}
+
+	function stat(){
+		$sql="SELECT nomcl,total FROM transaction group by total";
+		$db = config2::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+           
+        }
+	}
 }

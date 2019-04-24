@@ -121,7 +121,7 @@ try{
         }
 	}
 	function stat(){
-		$sql="SELECT * from coupon group by valeur";
+		$sql="SELECT etat, sum(etat) FROM coupon group by etat";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -132,5 +132,7 @@ try{
            
         }
 	}
+
+	
 	
 }
