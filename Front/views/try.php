@@ -1,15 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 
-    <?PHP
-include "../core/pictureC.php";
-session_start();
-$picture1C=new pictureC();
-$listepictures=$picture1C->afficherpictures();
-include "../core/commentC.php";
-$commentC=new commentC();
-$listecomments=$commentC->affichercomments();
-?>
+
 <!-- Mirrored from demo.devitems.com/ee/ee-v1/shop-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 18:50:29 GMT -->
 <head>
     <meta charset="utf-8">
@@ -167,106 +159,67 @@ $listecomments=$commentC->affichercomments();
     <!-- Header Category Start -->
   
 </div><!-- Header Section End -->
-<div class="page-header">
-                            <h4 class="page-title">.</h4>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#" class="text-light-color">Galerie</a></li>
-                            </ol>
-                        </div>
-<?PHP
-                            foreach($listepictures as $row){
-                                ?>
-<!-- Single Product Section Start -->
+<!-- Page Banner Section Start -->
+<div class="page-banner-section section">
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>A venir</h1>
+               
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">Evénements</a></li>
+                        <li><a href="#">A venir</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+       
+
+    </div>
+</div><!-- Page Banner Section End -->
+<!-- Product Section Start -->
 <div class="product-section section mt-90 mb-90">
     <div class="container">
-        
-        <div class="row mb-90">
-                    
-            <div class="col-lg-6 col-12 mb-50">
+        <div class="row">
+           
+            <div class="col-12">
+                
+                
+                
+                <!-- Shop Product Wrap Start -->
+                <!-- Shop Product Wrap Start -->
+               <!--row open-->
+                            <div class="row">
+                            <div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
+                               <div class="app-content">
+                    <section class="section">
 
-                <!-- Image -->
-                <div class="single-product-image">
-
-                    
-                        <div id="single-image-1" class="tab-pane fade show active big-image-slider">
-                            <div class="big-image"><h5 align="center"><?PHP echo $row['event']; ?></h5><img src="../pictures/<?PHP echo $row['schemaa']; ?>" alt="Big Image"><a href="../pictures/<?PHP echo $row['schemaa']; ?>" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
-                                <form method="POST" action="like_pic.php">
-                                            <div class="card-footer price-footer">
-                                                <input class="btn btn-warning mt-2 mb-2" type="submit" name="Like" value="like">
-                                                <h2><?PHP echo $row['likes']; ?> likes</h2>
-                                            </div>
-                                                <input type="hidden" value="<?PHP echo $row['schemaa']; ?>" name="schemaa">
-                                                <input type="hidden" value="<?PHP echo $row['likes']; ?>" name="likes">
-                                                
-                                        
-                                        </form>
-                            </div>
+                        <!--page-header open-->
+                        <div class="page-header">
+                            <h4>Réservation réussite, veuillez imprimer le fichier pdf pour trouvez vos passes le jour de l'evenement.</h4>
                         </div>
-                    
+                        
+                                            
+                                            <a class="btn btn-info mt-2 mb-2" href="afficher_event.php">Retour</a>      
 
-                </div>
-
+            </div>
+                            </div>
+                        <!--row closed-->
+                
+                
+                
             </div>
             
         </div>
-        
-        
-            
-        </div>
-        
     </div>
-</div><!-- Single Product Section End -->
-<?PHP
-                            }
-                            ?>
-<div class="page-header">
-                            <h4 class="page-title">.</h4>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#" class="text-light-color">Commentaires</a></li>
-                            </ol>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <?PHP
-                            foreach($listecomments as $row){
-                                ?>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4><?PHP echo $row['contenu']; ?></h4>
-                                    </div>
-                                    <form method="POST" action="sig_comment.php">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <p><?PHP echo $row['utilisateur']; ?></p>
-                                        </div>
-                                        <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
-                                        <button class="btn btn-primary" data-clipboard-action="comment" data-clipboard-target="#foo">Signaler commentaire</button>
-                                    </div>
-                                </form>
-                                </div>
-                                <?PHP
-                                }
-                                ?>
-                            </div>
-                        </div>
-<div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Votre commentaire</h4>
-                                    </div>
-                                    <form method="GET" action="comment_pic.php">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <input id="foo" type="text" class="form-control" name="contenu">
-                                        </div>
-                                        <input type="hidden" value="<?PHP echo $_SESSION['username']; ?>" name="iduser">
-                                        <button class="btn btn-primary" data-clipboard-action="comment" data-clipboard-target="#foo">Commenter</button>
-                                    </div>
-                                </form>
-                                </div>
-                            </div>
-                        </div>
+</div><!-- Feature Product Section End -->
+
+
+
 <!-- Subscribe Section Start -->
 <div class="subscribe-section section bg-gray pt-55 pb-55">
     <div class="container">

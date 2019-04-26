@@ -42,7 +42,7 @@ else if (isset($_GET['nb']) )
 		$pdf->AddPage();
 		$pdf->SetFont('Arial','B',16);
 		$pdf->Cell(40,100,$jomla);
-		$pdf->Image('assets/img/brand/logo-white.png',10,12,30,0,'','http://www.fpdf.org');
+		$pdf->Image('assets/images/log.jpg',10,12,30,0,'','http://www.fpdf.org');
 		$pdf->Output('F','doc.pdf',true);
 		$mail="yassine.chouk@esprit.tn";
 		$sujet="Résérvation Ariana scooters";

@@ -171,7 +171,7 @@ $listeevents=$event1C->recupererevents($_GET['search']);
         <!-- Page Banner -->
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
-                <h1>Evénements</h1>
+                <h1>A venir: <?php echo($_GET['search']);?></h1>
                
                 <div class="breadcrumb">
                     <ul>
