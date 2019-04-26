@@ -91,7 +91,7 @@ $listecomments=$commentC->affichercomments();
                     <!-- Logo Start -->
                     <div class="header-logo">
                         <a href="index.php">
-                          <img id="logo1" src="assets/images/log.gif" alt="Ariana Scooters">
+                          <img  src="assets/images/log.gif" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>
@@ -174,7 +174,7 @@ $listecomments=$commentC->affichercomments();
         <!-- Page Banner -->
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
-                <h1>Galerie</h1>
+                <h1 style="color: white;">Galerie</h1>
                
                 <div class="breadcrumb">
                     <ul>

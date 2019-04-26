@@ -166,7 +166,7 @@
         <!-- Page Banner -->
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
-                <h1>A venir</h1>
+                <h1 style="color: white;">A venir</h1>
                
                 <div class="breadcrumb">
                     <ul>
