@@ -101,7 +101,7 @@ $tot=0;
                     <!-- Logo Start -->
                     <div class="header-logo">
                         <a href="index.php">
-                          <img id="logo1" src="assets/images/log.png" alt="Ariana Scooters">
+                          <img id="logo1" src="assets/images/log.gif" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>
@@ -133,10 +133,9 @@ $tot=0;
                                 </li>
                                 <li class="menu-item-has-children"><a href="#">EVENEMENTS</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Column One</a>
+                                        <li><a href="afficher_event.php">A venir</a>
                                             <ul>
-                                                <li><a href="about-us.html">About us</a></li>
-                                                <li><a href="banner.html">Banner</a></li>
+                                                <li><a href="galerie.php">Galerie</a></li>
                                             </ul>
                                         </li>
                                     </ul>
