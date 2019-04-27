@@ -86,11 +86,11 @@ session_start ();
 
                    
                     <a href="login.html"><i class="icofont icofont-login d-none" ></i> <span><?php
-if (isset($_SESSION['l']) && isset($_SESSION['p'])) 
+if (isset($_SESSION['l']) && isset($_SESSION['p']))  
 { 
 
-     echo $_SESSION['r']; 
-    echo '<a href="./logout.php" class="btn btn-small btn-circle hover-theme mb-30" >Logout</a>';
+     echo $_SESSION['r'];?>  &nbsp;&nbsp;&nbsp;
+   <?php echo '<a href="./logout.php" class="btn btn-primary mt-1 mb-0  btn btn-small btn-radius" >Logout</a>';
 
 }
 else { 
@@ -113,8 +113,8 @@ else {
                 <div class="col mt-15 mb-15">
                     <!-- Logo Start -->
                     <div class="header-logo">
-                        <a href="index1.php">
-                          <img id="logo1" src="assets/images/log.png" alt="Ariana Scooters">
+                        <a href="index.php">
+                          <img  src="assets/images/log.gif" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>

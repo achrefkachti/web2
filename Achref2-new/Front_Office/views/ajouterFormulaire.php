@@ -120,11 +120,11 @@ function executeQuery($query)
 
                    
                     <a href="login.html"><i class="icofont icofont-login d-none" ></i> <span><?php
-if (isset($_SESSION['l']) && isset($_SESSION['p'])) 
+if (isset($_SESSION['l']) && isset($_SESSION['p']))  
 { 
 
-     echo $_SESSION['r']; 
-    echo '<a href="./logout.php" class="btn btn-small btn-circle hover-theme mb-30" >Logout</a>';
+     echo $_SESSION['r'];?>  &nbsp;&nbsp;&nbsp;
+   <?php echo '<a href="./logout.php" class="btn btn-primary mt-1 mb-0  btn btn-small btn-radius" >Logout</a>';
 
 }
 else { 
@@ -147,9 +147,10 @@ else {
                 <div class="col mt-15 mb-15">
                     <!-- Logo Start -->
                     <div class="header-logo">
-                        <a href="index.html">
-                            <img src="assets/images/logo.png" alt="E&E - Electronics eCommerce Bootstrap4 HTML Template">
-                            <img class="theme-dark" src="assets/images/logo-light.png" alt="E&E - Electronics eCommerce Bootstrap4 HTML Template">
+                        <a href="index1.php">
+                          <img  src="assets/images/log.gif" alt="Ariana Scooters">
+
+                      <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>
                     </div><!-- Logo End -->
                 </div>
@@ -158,7 +159,7 @@ else {
                         <nav>
                             <ul>
 
-                                <li ><a href="index.php">HOME</a>
+                                <li ><a href="index1.php">HOME</a>
                                    
                                 </li>
                                 <li class="menu-item-has-children"><a href="shop.php">Shop</a>
@@ -286,6 +287,13 @@ else {
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
                 <h1>REMPLIR UNE RECLAMATION</h1>
+
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">SAV</a></li>
+                        <li><a href="#">RECLAMATION</a></li>
+                    </ul>
+                </div>
                 
                 
             </div>

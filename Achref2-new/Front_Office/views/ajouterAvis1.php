@@ -101,9 +101,10 @@ session_start ();
                 <div class="col mt-15 mb-15">
                     <!-- Logo Start -->
                     <div class="header-logo">
-                        <a href="index.html">
-                            <img src="assets/images/logo.png" alt="E&E - Electronics eCommerce Bootstrap4 HTML Template">
-                            <img class="theme-dark" src="assets/images/logo-light.png" alt="E&E - Electronics eCommerce Bootstrap4 HTML Template">
+                        <a href="index.php">
+                          <img  src="assets/images/log.gif" alt="Ariana Scooters">
+
+                      <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>
                     </div><!-- Logo End -->
                 </div>
@@ -240,6 +241,14 @@ session_start ();
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
                 <h1>VOS AVIS</h1>
+
+
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">SAV</a></li>
+                        <li><a href="#">AVIS</a></li>
+                    </ul>
+                </div>
                 
                 
             </div>
