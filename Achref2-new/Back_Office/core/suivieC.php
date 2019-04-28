@@ -7,6 +7,7 @@ function afficherSuivie ($suivie){
 		echo "exam: ".$suivie->getExam()."<br>";
 		echo "remb: ".$suivie->getRemb()."<br>";
 		echo "dat: ".$suivie->getDat()."<br>";
+		echo "email: ".$suivie->getEmail()."<br>";
 		
 	}
 /*	function calculerSalaire($employe){
@@ -14,8 +15,8 @@ function afficherSuivie ($suivie){
 	} */
 
 	function ajouterSuivie($suivie){
-		$sql="insert into suivie (id,cin,exam,remb,dat) 
-		values (:id, :cin, :exam,:remb,:dat)";
+		$sql="insert into suivie (id,cin,exam,remb,dat,email) 
+		values (:id, :cin, :exam,:remb,:dat,:email)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
@@ -25,12 +26,14 @@ function afficherSuivie ($suivie){
         $exam=$suivie->getExam();
         $remb=$suivie->getRemb();
         $dat=$suivie->getDat();
+        $email=$suivie->getEmail();
         
 		$req->bindValue(':id',$id);
 		$req->bindValue(':cin',$cin);
 		$req->bindValue(':exam',$exam);
 		$req->bindValue(':remb',$remb);
 		$req->bindValue(':dat',$dat);
+		$req->bindValue(':email',$email);
 		
 
             $req->execute();
@@ -54,6 +57,19 @@ function afficherSuivie ($suivie){
             die('Erreur: '.$e->getMessage());
         }	
 	}
+
+	function afficherSui($emaill){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From suivie WHERE '$emaill' = email   ";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
 
 
 	function afficherall(){
@@ -85,7 +101,7 @@ function afficherSuivie ($suivie){
 	}
 	
 	function modifierSuivie($suivie,$id){
-		$sql="UPDATE suivie SET cin=:cin, exam=:exam, remb=:remb, dat=:dat WHERE id=:id";
+		$sql="UPDATE suivie SET cin=:cin, exam=:exam, remb=:remb, dat=:dat , email=:email WHERE id=:id";
 		
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -96,13 +112,15 @@ try{
         $exam=$suivie->getExam();
         $remb=$suivie->getRemb();
         $dat=$suivie->getDat();
-		$datas = array(':id'=>$id, ':cin'=>$cin, ':exam'=>$exam,':remb'=>$remb,':dat'=>$dat);
+        $email=$suivie->getEmail();
+		$datas = array(':id'=>$id, ':cin'=>$cin, ':exam'=>$exam,':remb'=>$remb,':dat'=>$dat,':email'=>$email);
 		//$req->bindValue(':cinn',$cinn);
 		$req->bindValue(':id',$id);
 		$req->bindValue(':cin',$cin);
 		$req->bindValue(':exam',$exam);
 		$req->bindValue(':remb',$remb);
 		$req->bindValue(':dat',$dat);
+		$req->bindValue(':email',$email);
 		
 		
             $s=$req->execute();

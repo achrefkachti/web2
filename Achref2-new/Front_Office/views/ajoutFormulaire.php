@@ -48,11 +48,11 @@ var_dump($employe1);
 $formulaire1C=new FormulaireC();
 $formulaire1C->ajouterFormulaire($formulaire1);
 	
-											$to='achref.kachti@esprit.tn';
-											$sujet='test mail en local';
-											$texte=$_POST['texte'];
+											$to=$_SESSION['l'];
+											$sujet='Votre demande a été prise en compte. Nous vous répondrons.';
+											//$texte=$_POST['texte'];
 											$header='From :  test@gmail.com';
-											mail($to,$sujet,$texte,$header); 
+											mail($to,$sujet,$header); 
 									     	
 //header('Location: afficherFormulaire.php');
 echo "<META http-equiv='refresh' content='0;URL=ajouterFormulaire.php'>";

@@ -37,6 +37,7 @@ if (!empty($_POST['adresse']) && !empty($_POST['password'])){
 		$_SESSION['p']=$_POST['password'];
 		
 		$_SESSION['r']=$t['prenom'];
+		$_SESSION['m']=$t['nom'];
 		header("location:index1.php");
 		
 		}

@@ -27,8 +27,8 @@ if ($_POST['dat'] < $today) {
 	
 }
 
-else if ( isset($_POST['cin']) and isset($_POST['exam']) and isset($_POST['remb']) and isset($_POST['dat'])){
-$suivie1=new suivie($_POST['id'],$_POST['cin'],$_POST['exam'],$_POST['remb'],$_POST['dat']);
+else if ( isset($_POST['cin']) and isset($_POST['exam']) and isset($_POST['remb']) and isset($_POST['dat']) and isset($_POST['email'])){
+$suivie1=new suivie($_POST['id'],$_POST['cin'],$_POST['exam'],$_POST['remb'],$_POST['dat'],$_POST['email']);
 //Partie2
 /*
 var_dump($employe1);

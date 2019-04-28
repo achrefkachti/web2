@@ -330,7 +330,7 @@ foreach($result as $row){
                                 <div class="col-md-6 col-12 mb-30">
                                     <label for="last_name">PRENOM</label>    
                                     <input type="text" id="Prenom" placeholder="Prenom" name="prenom" onblur="verifnom(this)" 
-                                     value="<?PHP echo $prenom ?>"  required>
+                                     value="<?PHP echo $prenom ?>"  readonly>
                                 </div>
                                 
                                 <div class="col-md-6 col-12 mb-30">

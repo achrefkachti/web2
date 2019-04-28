@@ -1,11 +1,13 @@
 
 <?PHP
 include "../core/suivieC.php";
+include "../core/formulaireC.php";
+
 $suivie1C=new SuivieC();
 $listeSuivies=$suivie1C->afficherSuivies();
 $listeSuivies=$suivie1C->afficherall();
 
-include "../core/formulaireC.php";
+
 $formulaire1C=new FormulaireC();
 $listeFormulaires=$formulaire1C->afficherFormulaires();
 //var_dump($listeEmployes->fetchAll());
@@ -374,7 +376,19 @@ function executeQuery($query)
                       <div class="form-group row">
                         <label for="inputName" class="col-md-3 col-form-label">CIN</label>
                         <div class="col-md-9">
+
                          <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" maxlength="8" required>
+								
+                     <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
+                        </div>
+                      </div>	
+
+                      
+                      <div class="form-group row">
+                        <label for="inputName" class="col-md-3 col-form-label">Email</label>
+                        <div class="col-md-9">
+                        	
+                         <input type="email" class="form-control" id="Email" placeholder="Email" name="email" onblur="veriftel(this)" required>
 								
                      <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
                         </div>
@@ -446,7 +460,8 @@ function executeQuery($query)
 											<table class="table table-bordered table-responsive-md table-striped text-center mb-0 text-nowrap">
 												<tr>
 													<th class="text-center">ID </th>
-													<th class="text-center">CIN </th>
+													
+													<th class="text-center">Email </th>
 													<th class="text-center">Type d'Examen</th>
 													<th class="text-center">Type de Remboursement</th>
 													<th class="text-center">Date de retour</th> 
@@ -458,7 +473,8 @@ function executeQuery($query)
 											    ?>
 												<tr>
 													<td class="pt-3-half"><?PHP echo $row['id']; ?></td>
-													<td class="pt-3-half"><?PHP echo $row['cin']; ?></td>
+													
+													<td class="pt-3-half"><?PHP echo $row['email']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['exam']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['remb']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['dat']; ?></td>

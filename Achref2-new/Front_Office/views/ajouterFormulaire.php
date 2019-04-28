@@ -4,6 +4,9 @@ $formulaire1C=new formulaireC();
 //$listeFormulaires=$formulaire1C->afficherFormulaires();
 session_start (); 
 $listeFormulaires=$formulaire1C->afficherForm($_SESSION['l']);
+foreach ($listeFormulaires as $row ) {
+    
+}
 
 //var_dump($listeEmployes->fetchAll());
 ?>
@@ -326,7 +329,7 @@ else {
                                 
                                 <div class="col-md-6 col-12 mb-30">
                                     <label for="first_name">NOM</label>    
-                                    <input type="text" id="Nom" placeholder="Nom" name="nom" onblur="verifnom(this)"  required>
+                                    <input type="text" id="Nom" placeholder="Nom" name="nom" onblur="verifnom(this)"  value="<?PHP echo $row['nom']; ?>" readonly>
                                 </div>
                                 
                                 <div class="col-md-6 col-12 mb-30">

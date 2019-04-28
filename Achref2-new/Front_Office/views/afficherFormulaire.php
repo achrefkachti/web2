@@ -335,9 +335,7 @@ else {
                                 <tr>
                                     <th class="text-center">ID </th>
                                     <th class="text-center">CIN </th>
-                                    <th class="text-center">Nom</th>
-                                    <th class="text-center">Prénom</th>
-                                    <th class="text-center">Email</th>
+                                    
                                     <th class="text-center">Téléphone</th>
                                     <th class="text-center">Catégorie</th>
                                     <th class="text-center">Référence</th>
@@ -357,9 +355,7 @@ else {
                                 <tr>
                                     <td class="pt-3-half"><?PHP echo $row['id']; ?></td>
                                     <td class="pt-3-half"><?PHP echo $row['cin']; ?></td>
-                                    <td class="pt-3-half"><?PHP echo $row['nom']; ?></td>
-                                    <td class="pt-3-half"><?PHP echo $row['prenom']; ?></td>
-                                    <td class="pt-3-half"><?PHP echo $row['email']; ?></td>
+                                    
                                     <td class="pt-3-half"><?PHP echo $row['teleph']; ?></td>
                                     <td class="pt-3-half"><?PHP echo $row['catg']; ?></td>
                                     <td class="pt-3-half"><?PHP echo $row['ref']; ?></td>

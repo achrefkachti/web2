@@ -29,8 +29,7 @@ class Client{
 		return $this->prenom;
 		
 	}
-
-	function getNom()
+    function getNom()
 	{
 		return $this->nom;
 		

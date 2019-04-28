@@ -4,11 +4,17 @@ include "../entities/suivie.php";
 $suivie1C=new suivieC();
 $listeSuivies=$suivie1C->afficherSuivies();
 
-$listeSuivies1=$suivie1C->triersuivie();
+//$listeSuivies=$suivie1C->recherche($_POST['valueToSearch']);
 
 session_start (); 
+$listeSuivies=$suivie1C->afficherSui($_SESSION['l']);
+
 //var_dump($listeEmployes->fetchAll());
 ?>
+
+
+
+
 <?php
 
 if(isset($_POST['search']))
@@ -330,8 +336,8 @@ else {
                                 </tr>
 
                                 <?PHP
-                                 //while ($row = mysqli_fetch_array($result)):
-                                 while($row = mysqli_fetch_array($search_result)):
+                                 foreach ($listeSuivies as $row ) {
+                                 //while($row = mysqli_fetch_array($search_result)):
                                  ?>
                                 <tr>
                                     <td class="pt-3-half"><?PHP echo $row['id']; ?></td>
@@ -339,9 +345,10 @@ else {
                                     <td class="pt-3-half"><?PHP echo $row['exam']; ?></td>
                                     <td class="pt-3-half"><?PHP echo $row['remb']; ?></td>
                                     <td class="pt-3-half"><?PHP echo $row['dat']; ?>
-                                        <?PHP endwhile;
-                                                    
-                                        ?>
+                                         <?PHP
+                                            //endwhile;
+                                            }
+                                      ?>
                                     </td>
                                 
                                 
@@ -359,7 +366,7 @@ else {
                 
             </div>
         </div></br></br></br>
-        <form action="afficherSuivie.php" method="post">
+ <!--       <form action="afficherSuivie.php" method="post">
             
             
                                     
@@ -374,7 +381,7 @@ else {
                                                 <br><br>
                                             </div>
     </div>
-</div>
+</div> -->
 <!-- Compare Page End --> 
 
 

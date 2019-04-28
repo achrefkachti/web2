@@ -5,13 +5,15 @@ class Suivie{
 	private $exam;
 	private $remb;
 	private $dat;
+	private $email;
 	
-	function __construct($id,$cin,$exam,$remb,$dat){
+	function __construct($id,$cin,$exam,$remb,$dat,$email){
 		$this->id=$id;
 		$this->cin=$cin;
 		$this->exam=$exam;
 		$this->remb=$remb;
 		$this->dat=$dat;
+		$this->email=$email;
 		
 	}
 	function getId(){
@@ -29,6 +31,9 @@ class Suivie{
 	function getDat(){
 		return $this->dat;
 	}
+	function getEmail(){
+		return $this->email;
+	}
 	
 
 	function setCin($cin){
@@ -42,6 +47,9 @@ class Suivie{
 	}
 	function setDat($dat){
 		$this->dat=$dat;
+	}
+	function setEmail($email){
+		$this->email=$email;
 	}
 	
 
