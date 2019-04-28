@@ -1,58 +1,18 @@
 
 <?PHP
-include "../core/suivieC.php";
-$suivie1C=new SuivieC();
-$listeSuivies=$suivie1C->afficherSuivies();
-$listeSuivies=$suivie1C->afficherall();
+include "../core/AvisC.php";
+$avis1C=new avisC();
+$listeAviss=$avis1C->afficherAviss();
 
-include "../core/formulaireC.php";
-$formulaire1C=new FormulaireC();
-$listeFormulaires=$formulaire1C->afficherFormulaires();
 //var_dump($listeEmployes->fetchAll());
 ?>
 
 
 
-
-
-<?php
-
-
-// Ascending Order
-if(isset($_POST['ASC']))
-{
-    $asc_query = "SELECT * FROM suivie ORDER BY remb ASC";
-    $result = executeQuery($asc_query);
-}
-
-// Descending Order
-elseif (isset ($_POST['DESC'])) 
-    {
-          $desc_query = "SELECT * FROM suivie ORDER BY remb DESC";
-          $result = executeQuery($desc_query);
-    }
-    
-    // Default Order
- else {
-        $default_query = "SELECT * FROM suivie";
-        $result = executeQuery($default_query);
-}
-
-
-function executeQuery($query)
-{
-    $connect = mysqli_connect("localhost", "root", "", "achref");
-    $result = mysqli_query($connect, $query);
-    return $result;
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 	
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+<!-- Mirrored from www.spruko.com/demo/splite/blog-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:35:07 GMT -->
 <head>
 
 		<meta charset="UTF-8">
@@ -65,14 +25,14 @@ function executeQuery($query)
 		<!--Bootstrap.min css-->
 		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 
+		<!--mCustomScrollbar css-->
+		<link rel="stylesheet" href="assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
+
 		<!--Icons css-->
 		<link rel="stylesheet" href="assets/css/icons.css">
 
 		<!--Style css-->
 		<link rel="stylesheet" href="assets/css/style.css">
-
-		<!--mCustomScrollbar css-->
-		<link rel="stylesheet" href="assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
 
 		<!--Sidemenu css-->
 		<link rel="stylesheet" href="assets/plugins/toggle-menu/sidemenu.css">
@@ -324,212 +284,86 @@ function executeQuery($query)
 				</aside>
 				<!--aside closed-->
 
-                <!--app-content open-->
+				<!--app-content open-->
 				<div class="app-content">
 					<section class="section">
 
                         <!--page-header open-->
 						<div class="page-header">
-							<h4 class="page-title">Ajouter les Suivies</h4>
+							<h4 class="page-title">Commentaires SAV</h4>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#" class="text-light-color">SAV</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Suivie</li>
+								<li class="breadcrumb-item active" aria-current="page">Commentaires</li>
 							</ol>
 						</div>
 						<!--page-header closed-->
 
-<!--=====================================================================================================================================-->						
-					
-
-						<!--row open-->
-
-                         <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Suivie</h4>
-                  </div>
-                  <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="ajoutSuivie.php">
-
-
-
-                      <div class="form-group row">
-                        <label for="inputName" class="col-md-3 col-form-label">ID</label>
-                        <div class="col-md-9">
-                          <select class="form-control" id="Id" name="id">
-                          	
-								<?PHP
-								foreach($listeFormulaires as $row){
-								?>
-							<option value="<?PHP echo $row['id']; ?>"><?PHP echo $row['id']; ?>
-							</option>
-								<?PHP } ?>
-								</select>
-                     <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
-                        </div>
-                      </div>	
-
-                      
-                      <div class="form-group row">
-                        <label for="inputName" class="col-md-3 col-form-label">CIN</label>
-                        <div class="col-md-9">
-                         <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" maxlength="8" required>
+                        <!--row open-->
+						<div class="row">
+							<div class="col-xl-8 col-lg-12 col-md-12">
 								
-                     <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
-                        </div>
-                      </div>
-
-                   
-
-
-                      
-
-                      <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="example-email">Type d'Examen</label>
-                        <div class="col-md-9" >
-                          <select class="form-control" id="Exam" name="exam">
-                            <option>Negatif</option>
-                            <option>Positif</option>
-                            <option>Pas encore</option>
-                            
-                          </select>
-                        </div>
-                      </div>
-
-
-                      <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="example-email">Type de Remboursement</label>
-                        <div class="col-md-9" >
-                          <select class="form-control" id="Remb" name="remb">
-                            <option>Reparation</option>
-                            <option>Bon d'achats</option>
-                            <option>Viremment</option>
-                            <option>Retour du produit</option>
-                            <option>Pas encore</option>
-                            
-                          </select>
-                        </div>
-                      </div>
-
-
-
-                      <div class="form-group row">
-                        <label class="col-md-3 col-form-label">Date de retour</label>
-                        <div class="col-md-9">
-                          <input class="form-control" type="date" id="myDate" name="dat" >
-                        </div>
-                      </div>
-                   
-                      
-
-                        <button type="submit" class="btn btn-primary mt-1 mb-0" name="ajouter" value="Envoyer" onclick="envoyer()" >Submit</button>
-                    
-                </div></div>
-             
-
-               </form>
-
-
-              <!--row open-->
-
-                    <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Les Suivies</h4>
-                  </div>
-                  <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="ajouterSuivie.php" >
+								
+									
+								<div class="card">
+									<div class="card-header">
+										<h4 class="card-title">Comments</h4>
+									</div>
+											<?php
+                                                    foreach($listeAviss as $row){?>
 									<div class="card-body">
-										<div id="table" class="table-responsive table-editable">
-											<table class="table table-bordered table-responsive-md table-striped text-center mb-0 text-nowrap">
-												<tr>
-													<th class="text-center">ID </th>
-													<th class="text-center">CIN </th>
-													<th class="text-center">Type d'Examen</th>
-													<th class="text-center">Type de Remboursement</th>
-													<th class="text-center">Date de retour</th> 
-													<th class="text-center">Modifier</th>
-													<th class="text-center">Supprimer</th>
-												</tr>
-												<?PHP
-                                                  while ($row = mysqli_fetch_array($result)):
-											    ?>
-												<tr>
-													<td class="pt-3-half"><?PHP echo $row['id']; ?></td>
-													<td class="pt-3-half"><?PHP echo $row['cin']; ?></td>
-													<td class="pt-3-half"><?PHP echo $row['exam']; ?></td>
-													<td class="pt-3-half"><?PHP echo $row['remb']; ?></td>
-													<td class="pt-3-half"><?PHP echo $row['dat']; ?></td>
-											       
-													<td>	
-														<span class="table-remove"><a href="modifierSuivie.php?id=<?PHP echo $row['id']; ?>"><button type="button" class="btn btn-sm btn-primary badge">Modifier</button></a></span>
+										<div class="">
+											<div class="col-md-12">
+												<div class="media mt-0">
+													
+													<div class="media-body">
+														<h4 class="media-heading"> <?php echo $row['user']; ?> <br>
+														<small class="text-muted"></small> </h4>
+														<p> <?php echo $row['avis'];?> </p>
 														
-													</td>
+														
 
-													<td>	
-													  <form class="form-horizontal" method="POST" action="supprimerSuivie.php">
-														<span class="table-remove">
+														<form method="POST" action="supprimerAvis.php">
+														
 															<button class="btn btn-sm btn-primary badge" 
 															value =  "supprimer" name="ajouter" type="submit">
-															<i class="fa fa-trash"></i>
-														    </button>
-														</span>
+															<i class="fa fa-remove" data-toggle="tooltip" title="" ></i>
+														    </button>		
+														
 														<input type="hidden" value ="<?php echo $row['id']; ?>" name="id">
 													  </form>
 
-														<?PHP endwhile;?>
 														
-													</td>
-
-													
-
-                                                    
-													
-												</tr>
-												
-											</table>
-										</div>
-									</div>
-             						
-            
-                            
-								
-									<div class="card-body">
-										<div class="input-group">
-											
-                                            <button type="submit" class="btn btn-primary mt-1 mb-0" name="ASC" value="Ascending" >Ascending</button><br><br>
-                                            <button type="submit" class="btn btn-primary mt-1 mb-0" name="DESC" value="Descending" >Descending</button>
-											<br><br>
+													</div>
+												</div>
 											</div>
+											
 										</div>
 									</div>
-								
-           
+													
+												<?php } ?>
 								</div>
+
+								
 							</div>
 						</div>
+								
+								
+						<!--row closed-->
 
-</form>
-                    						<!--row closed-->
-
-                        
-<!--=====================================================================================================================================-->				
 					</section>
 				</div>
 				<!--app-content closed-->
 
 				<footer class="main-footer">
 					<div class="text-center">
-					
+						Copyright &copy;Splite 2019. Design By<a href="https://spruko.com/"> Spruko</a>
 					</div>
 				</footer>
 
 				<!-- Popupchat open-->
 				<div class="popup-box chat-popup" id="qnimate">
 					<div class="popup-head">
-						<div class="popup-head-left pull-left"><img src="assets/img/avatar/avatar-3.jpg" alt="iamgurdeeposahan" class="mr-2"> Youssef Ghedas</div>
+						<div class="popup-head-left pull-left"><img src="assets/img/avatar/avatar-3.jpg" alt="iamgurdeeposahan" class="mr-2"> Alica Nestle</div>
 						<div class="popup-head-right pull-right">
 							<div class="btn-group">
 								<button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
@@ -551,7 +385,7 @@ function executeQuery($query)
 							</div>
 							<div class="direct-chat-msg">
 								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name float-left">Youssef Ghedas</span>
+									<span class="direct-chat-name float-left">Alica Nestle</span>
 									<span class="direct-chat-timestamp float-right">7:40 Am</span>
 								</div>
 								<img class="direct-chat-img" src="assets/img/avatar/avatar-3.jpg" alt="message user image">
@@ -613,8 +447,9 @@ function executeQuery($query)
 		<!-- Back to top -->
 		<a href="#top" id="back-to-top" ><i class="fa fa-angle-up"></i></a>
 
+		
+
 		<!--Jquery.min js-->
-		<script type="text/javascript" src="js/form.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 
 		<!--popper js-->
@@ -642,11 +477,10 @@ function executeQuery($query)
 		<script src="assets/plugins/toggle-menu/sidemenu.js"></script>
 
 		<!--Scripts js-->
-		<script src="assets/js/scripts.js"></script>
-		<script src="js/form.js"></script>
 		<script src="assets/js/jquery.showmore.js"></script>
+		<script src="assets/js/scripts.js"></script>
 
-	 </body>
+	</body>
 
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+<!-- Mirrored from www.spruko.com/demo/splite/blog-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:35:07 GMT -->
 </html>

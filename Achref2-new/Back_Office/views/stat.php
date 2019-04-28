@@ -297,9 +297,11 @@ $res=$dbhandle->query($query);
                 <li><a href="supprimerSuivie.html" class="slide-item"> Supprimer Suivie</a></li>
                 <li><a href="afficherFormulaireback.php" class="slide-item"> Afficher Réclamation</a></li>
                 <li><a href="mailing.php" class="slide-item"> Envoyer Mail</a></li>
+                <li><a href="gererAvis.php" class="slide-item"> Gérer le Avis</a></li>
                 <li><a href="stat.php" class="slide-item"> Statistique Réclamation</a></li>
                 <li><a href="stat2.php" class="slide-item">Statistique Réclamation II</a></li>
                 <li><a href="stat3.php" class="slide-item">Statistique Réclamation III</a></li>
+
               </ul>
             </li>
             
@@ -439,8 +441,7 @@ $res=$dbhandle->query($query);
     <!-- Back to top -->
     <a href="#top" id="back-to-top" ><i class="fa fa-angle-up"></i></a>
 
-    <!-- Popup-chat -->
-    <a href="#" id="addClass"><i class="ti-comment"></i></a>
+
 
     <!--Jquery.min js-->
     <script src="assets/js/jquery.min.js"></script>

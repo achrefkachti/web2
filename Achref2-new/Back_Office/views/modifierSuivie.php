@@ -260,14 +260,16 @@ include "../core/suivieC.php";
 						<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-edit"></i><span class="side-menu__label">Service après Vente</span><span class="badge badge-pink nav-badge">6</span></a>
 							<ul class="slide-menu">
-								<li><a href="ajouterSuivie.php" class="slide-item"> Ajouter Suivie</a></li>
-								<li><a href="supprimerSuivie.html" class="slide-item"> Supprimer Suivie</a></li>
-								<li><a href="afficherFormulaireback.php" class="slide-item"> Afficher Réclamation</a></li>
-								<li><a href="mailing.php" class="slide-item"> Envoyer Mail</a></li>
-								<li><a href="stat.php" class="slide-item"> Statistique Réclamation</a></li>
-								<li><a href="stat2.php" class="slide-item">Statistique Réclamation II</a></li>
-                                <li><a href="stat3.php" class="slide-item">Statistique Réclamation III</a></li>
-							</ul>
+                <li><a href="ajouterSuivie.php" class="slide-item"> Ajouter Suivie</a></li>
+                <li><a href="supprimerSuivie.html" class="slide-item"> Supprimer Suivie</a></li>
+                <li><a href="afficherFormulaireback.php" class="slide-item"> Afficher Réclamation</a></li>
+                <li><a href="mailing.php" class="slide-item"> Envoyer Mail</a></li>
+                <li><a href="gererAvis.php" class="slide-item"> Gérer le Avis</a></li>
+                <li><a href="stat.php" class="slide-item"> Statistique Réclamation</a></li>
+                <li><a href="stat2.php" class="slide-item">Statistique Réclamation II</a></li>
+                <li><a href="stat3.php" class="slide-item">Statistique Réclamation III</a></li>
+
+              </ul>
 						</li>
 					</ul>
 				</aside>
@@ -510,8 +512,7 @@ if (isset($_POST['modifier'])){
 		<!-- Back to top -->
 		<a href="#top" id="back-to-top" ><i class="fa fa-angle-up"></i></a>
 
-		<!-- Popup-chat -->
-		<a href="#" id="addClass"><i class="ti-comment"></i></a>
+		
 
 		<!--Jquery.min js-->
 		<script type="text/javascript" src="js/form.js"></script>
