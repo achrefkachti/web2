@@ -261,6 +261,7 @@ $listecomments=$commentC->affichercomments();
                                     <div class="card-header">
                                         <h4>Votre commentaire</h4>
                                     </div>
+                                    <?php if (isset($_SESSION['username'])) { ?>
                                     <form method="GET" action="comment_pic.php">
                                     <div class="card-body">
                                         <div class="form-group">
@@ -269,7 +270,16 @@ $listecomments=$commentC->affichercomments();
                                         <input type="hidden" value="<?PHP echo $_SESSION['username']; ?>" name="iduser">
                                         <button class="btn btn-primary" data-clipboard-action="comment" data-clipboard-target="#foo">Commenter</button>
                                     </div>
+
                                 </form>
+                                <?php } else { ?>
+                                	<div class="card-body">
+                                        <div class="form-group">
+                                            <input id="foo" type="text" class="form-control" name="contenu">
+                                        </div>
+                                        <a href="login.html" class="btn btn-primary" >Commnter</a>
+                                    </div>
+                                <?php } ?>
                                 </div>
                             </div>
                         </div>

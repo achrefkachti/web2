@@ -99,7 +99,7 @@ if (isset($_GET['id'])){
                     <!-- Logo Start -->
                     <div class="header-logo">
                         <a href="index.php">
-                          <img id="logo1" src="assets/images/log.gif" alt="Ariana Scooters">
+                          <img src="assets/images/log.gif" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>

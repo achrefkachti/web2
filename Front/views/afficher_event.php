@@ -5,6 +5,7 @@
 include "../core/eventC.php";
 $event1C=new eventC();
 $listeevents=$event1C->afficherevents();
+session_start();
 
 ?>
 <!-- Mirrored from demo.devitems.com/ee/ee-v1/shop-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 18:50:29 GMT -->
@@ -186,8 +187,9 @@ $listeevents=$event1C->afficherevents();
 
     </div>
 </div><!-- Page Banner Section End -->
+
 <!-- Product Section Start -->
-<div class="product-section section mt-90 mb-90">
+<div class="product-section section mt-90 mb-40">
     <div class="container">
         <div class="row">
            
@@ -236,12 +238,18 @@ $listeevents=$event1C->afficherevents();
                                 </div>
 
                             </div>
+                            <?php if (isset($_SESSION['username'])) { ?>
                             <form method="GET" action="participer_event.php">
                                             <div class="card-footer price-footer">
                                                 <input class="btn btn-warning mt-2 mb-2" type="submit" name="Participer" value="Participer">
                                             </div>
                                                 <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
                                         </form>
+                                        <?php } else { ?>
+                                        	<div class="card-footer price-footer">
+                                                <a class="btn btn-warning mt-2 mb-2" href="login.html" >Participer</a>
+                                            </div>
+                                        <?php }  ?>
 
                         </div><!-- Product End -->
                         <?PHP

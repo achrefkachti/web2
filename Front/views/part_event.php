@@ -4,7 +4,7 @@ include "../core/eventC.php" ;
 	$nb=$_GET['quantite']-$_GET['nb'];
 	$id=$_GET['id'];
 	$eventC=new eventC();
-
+session_start();
 if ( empty($_GET['nb'])) 
 {
 ?>
@@ -47,7 +47,7 @@ else if (isset($_GET['nb']) )
 		$mail="yassine.chouk@esprit.tn";
 		$sujet="Résérvation Ariana scooters";
 		$header='From :  Service AS';
-		$message=$jomla;
+		$message=$_SESSION['username'].' a reservé '.$_GET['nb'].' passes pour levenement '.$_GET['event'];
 		mail($mail,$sujet,$message,$header);
 		echo "<META http-equiv='refresh' content='0;URL=pdf_event.php'>";
     }
