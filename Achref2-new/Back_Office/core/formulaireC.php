@@ -69,6 +69,19 @@ function afficherFormulaire ($formulaire){
         }	
 }
 
+    function afficherFormulaires2(){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From formulaire limit 1 ";
+		$db = config2::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
+
 
 
    function afficherForm($emaill){

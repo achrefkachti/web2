@@ -38,6 +38,10 @@ var_dump($employe1);
 $suivie1C=new SuivieC();
 $suivie1C->ajouterSuivie($suivie1);
 //header('Location: afficherFormulaire.php');
+//var_dump($_POST['id']);
+//var_dump($_POST['cin']);
+//var_dump($_POST['email']);
+
 echo "<META http-equiv='refresh' content='0;URL=ajouterSuivie.php'>";
     ?>
     <script type="text/javascript">

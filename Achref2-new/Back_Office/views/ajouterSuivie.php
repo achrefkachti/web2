@@ -10,6 +10,7 @@ $listeSuivies=$suivie1C->afficherall();
 
 $formulaire1C=new FormulaireC();
 $listeFormulaires=$formulaire1C->afficherFormulaires();
+$listeFormulaires2=$formulaire1C->afficherFormulaires2();
 //var_dump($listeEmployes->fetchAll());
 ?>
 
@@ -352,22 +353,31 @@ function executeQuery($query)
                     <h4>Suivie</h4>
                   </div>
                   <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="ajoutSuivie.php">
+                    <form class="form-horizontal" method="POST" action="ajoutSuivie.php" name="f">
 
 
 
                       <div class="form-group row">
                         <label for="inputName" class="col-md-3 col-form-label">ID</label>
                         <div class="col-md-9">
-                          <select class="form-control" id="Id" name="id">
+                          <select class="form-control" id="Id" name="idd" onchange="remplir(this)">
                           	
 								<?PHP
 								foreach($listeFormulaires as $row){
 								?>
-							<option value="<?PHP echo $row['id']; ?>"><?PHP echo $row['id']; ?>
+							<option value="<?PHP  echo $row['id'].'-'.$row['email'].'-'.$row['cin']; ?>"><?PHP echo $row['id']; ?>
 							</option>
 								<?PHP } ?>
 								</select>
+
+								
+								<?PHP
+								
+								foreach($listeFormulaires2 as $row){ ?>
+
+									<input type="hidden" name="id"  value="<?PHP  echo $row['id']; ?>"> 
+									<?PHP } ?>
+								
                      <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
                         </div>
                       </div>	
@@ -377,7 +387,7 @@ function executeQuery($query)
                         <label for="inputName" class="col-md-3 col-form-label">CIN</label>
                         <div class="col-md-9">
 
-                         <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" maxlength="8" required>
+                         <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" maxlength="8" readonly>
 								
                      <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
                         </div>
@@ -388,7 +398,7 @@ function executeQuery($query)
                         <label for="inputName" class="col-md-3 col-form-label">Email</label>
                         <div class="col-md-9">
                         	
-                         <input type="email" class="form-control" id="Email" placeholder="Email" name="email" onblur="veriftel(this)" required>
+                         <input type="email" class="form-control" id="Email" placeholder="Email" name="email" onblur="veriftel(this)" readonly>
 								
                      <!--     <input type="number" class="form-control" id="Cin" placeholder="Cin" name="cin" onblur="veriftel(this)" required> -->
                         </div>
@@ -460,7 +470,7 @@ function executeQuery($query)
 											<table class="table table-bordered table-responsive-md table-striped text-center mb-0 text-nowrap">
 												<tr>
 													<th class="text-center">ID </th>
-													
+													<th class="text-center">CIN </th>
 													<th class="text-center">Email </th>
 													<th class="text-center">Type d'Examen</th>
 													<th class="text-center">Type de Remboursement</th>
@@ -473,7 +483,7 @@ function executeQuery($query)
 											    ?>
 												<tr>
 													<td class="pt-3-half"><?PHP echo $row['id']; ?></td>
-													
+													<td class="pt-3-half"><?PHP echo $row['cin']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['email']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['exam']; ?></td>
 													<td class="pt-3-half"><?PHP echo $row['remb']; ?></td>
@@ -661,6 +671,20 @@ function executeQuery($query)
 		<script src="assets/js/scripts.js"></script>
 		<script src="js/form.js"></script>
 		<script src="assets/js/jquery.showmore.js"></script>
+		<script >
+			function remplir(input)
+			{
+                      var chaine=input.value;
+                      var tab=chaine.split('-');
+                      var cin=Number(tab[2]);
+                      f.cin.value=cin;
+                      f.email.value=tab[1];
+                      f.id.value=tab[0];
+			}
+
+            
+
+		</script>
 
 	 </body>
 

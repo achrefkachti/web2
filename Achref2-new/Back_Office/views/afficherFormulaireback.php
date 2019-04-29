@@ -486,20 +486,37 @@ function filterTable($query)
 												<br><br>
                                         
 
-							</form>			
+							</form>		</br></br></br>
+
+
+								
 										
 
-										<div class="card-body">
 										
-											
-											<div  align="right" >
-												
-												<a class="btn btn-primary buttons-pdf buttons-html5" href="pdfpdf.php" tabindex="0" aria-controls="example" type="button" target="_blank"><span>PDF</span></a>
-												<br><br>
-											
+											<div class="col-sm-12 col-md-6">
+												<div class="dt-buttons btn-group">
+												<form action="pdfpdf.php" method="post">      
+												    <button class="btn btn-primary buttons-excel buttons-html5" tabindex="0" aria-controls="example" type="submit" ><span>PDF</span></button>  
+												</form>
+												<form method="post" action="export.php">
+													<button type="submit" name="export" class="btn btn-primary buttons-excel buttons-html5" value="Export tabindex="0" aria-controls="example"" /><span>Excel</span></button>
+												</form>
+												</div>
 											</div>
-										
-									    </div>
+									    
+							 </br>
+
+
+							
+								<div class="col-sm-12 col-md-6">
+								    <div class="dt-buttons btn-group"> 
+     							      
+     							    </div>
+     							</div>
+    						</form>
+
+
+
 									</div>
 								
 							</div>

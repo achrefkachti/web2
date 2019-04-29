@@ -57,19 +57,6 @@ function afficherSuivie ($suivie){
             die('Erreur: '.$e->getMessage());
         }	
 	}
-	
-	function recherche($valuee){
-		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SELECT * FROM suivie WHERE CONCAT(id, cin, exam, remb) LIKE '%".$valuee."%'";
-		$db = config::getConnexion();
-		try{
-		$liste=$db->query($sql);
-		return $liste;
-		}
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
-        }	
-	}
 
 	function afficherSui($emaill){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
