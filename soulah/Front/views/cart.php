@@ -6,15 +6,17 @@ include "../core/panierC.php";
 include "../entities/coupon.php";
 include "../core/couponC.php";
 include "../core/transC.php";
-$_SESSION['id']="3";
-$_SESSION['username']="soulah";
+
                               $couponC=new couponC();
 
 
 
 $panierC=new panierC();
 $listepanier=$panierC->afficherprod();
-
+$nb=$panierC->countp();
+foreach ($nb as $key ) {
+    $foxtrot=$key['a'];
+}
 $tot=0;
  $extot=0;?>
 
@@ -85,12 +87,26 @@ $tot=0;
                     </div><!-- Header Advance Search End -->
                 </div>
 
-                <div class="col order-2 order-xs-2 order-lg-12 mt-10 mb-10">
+               <div class="col order-2 order-xs-2 order-lg-12 mt-10 mb-10">
                     <!-- Header Account Links Start -->
+
+<?PHP 
+                        if (isset($_SESSION['username']) && isset($_SESSION['password'])) 
+{  ?>
                     <div class="header-account-links">
+                        <a href="#"><i class="icofont icofont-user-alt-7"></i> <span><?php echo $_SESSION['username']; ?></span></a>
+                        <a href="logout.php"><i class="icofont icofont-login d-none"></i> <span>Logout</span></a>
+                    </div><!-- Header Account Links End -->
+<?PHP } ?>
+
+
+<?PHP if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) 
+                        { ?>
+                               <div class="header-account-links">
                         <a href="register.html"><i class="icofont icofont-user-alt-7"></i> <span>my account</span></a>
                         <a href="login.html"><i class="icofont icofont-login d-none"></i> <span>Login</span></a>
-                    </div><!-- Header Account Links End -->
+                    </div>
+                            <?PHP } ?>
                 </div>
 
             </div>
@@ -98,7 +114,7 @@ $tot=0;
     </div><!-- Header Top End -->
 
     <!-- Header Bottom Start -->
-    <div class="header-bottom header-bottom-one header-sticky">
+     <div class="header-bottom header-bottom-one header-sticky">
         <div class="container">
             <div class="row align-items-center justify-content-between">
 
@@ -106,7 +122,7 @@ $tot=0;
                     <!-- Logo Start -->
                     <div class="header-logo">
                         <a href="index.php">
-                          <img id="logo1" src="assets/images/log.png" alt="Ariana Scooters">
+                          <img src="assets/images/log.gif" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>
@@ -124,7 +140,7 @@ $tot=0;
                                    
                                 </li>
                                 <li class="menu-item-has-children"><a href="shop.php">Shop</a>
-                                    <ul class="sub-menu">
+                                   <ul class="sub-menu">
                                         <li class=""><a href="scooter.php">Scooter</a>
                                
                                         </li>
@@ -138,10 +154,9 @@ $tot=0;
                                 </li>
                                 <li class="menu-item-has-children"><a href="#">EVENEMENTS</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Column One</a>
+                                        <li><a href="afficher_event.php">A venir</a>
                                             <ul>
-                                                <li><a href="about-us.html">About us</a></li>
-                                                <li><a href="banner.html">Banner</a></li>
+                                                <li><a href="galerie.php">Galerie</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -168,7 +183,9 @@ $tot=0;
                         <!-- Wishlist -->
                         <a href="wishlist.php" class="header-wishlist"><i class="ti-heart"></i> </a>
                         <!-- Cart -->
-                        <a href="cart.php" class="header-cart"><i class="ti-shopping-cart"></i></a>
+                        <a href="cart.php" class="header-cart"><i class="ti-shopping-cart"></i>
+                            <span class="number"><?php echo $foxtrot;?></span>
+                        </a>
 
                     </div><!-- Header Shop Links End -->
                 </div>
@@ -192,36 +209,7 @@ $tot=0;
 <div class="cart-overlay"></div>
 
 <!-- Page Banner Section Start -->
-<div class="page-banner-section section">
-    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
 
-        <!-- Page Banner -->
-        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
-            <div class="page-banner">
-                <h1>Cart</h1>
-                <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
-                <div class="breadcrumb">
-                    <ul>
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Banner -->
-        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
-            <div class="banner"><a href="#"><img src="assets/images/banner/banner-15.jpg" alt="Banner"></a></div>
-        </div>
-
-        <!-- Banner -->
-        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
-            <div class="banner"><a href="#"><img src="assets/images/banner/banner-14.jpg" alt="Banner"></a></div>
-        </div>
-
-    </div>
-</div><!-- Page Banner Section End -->
 
 <!-- Cart Page Start -->
 <div class="page-section section pt-90 pb-50">
@@ -356,7 +344,10 @@ if (isset($_POST['demander'])) {
 
 }
 ?>
+
                         </div>
+
+
                         <!-- Discount Coupon -->
 
                         <div class="discount-coupon">
@@ -408,20 +399,30 @@ if (isset($_POST['apply'])) {
 ?>
 
                         </div>
+
+
                     </div>
 
                     <!-- Cart Summary -->
                     <div class="col-lg-6 col-12 mb-40 d-flex">
+                     <form method="POST" action="ajoutertrans.php">
                         <div class="cart-summary">
                             <div class="cart-summary-wrap">
                                 <h4>Cart Summary</h4>
-                                <p>Sub Total <span><?php echo $extot ?></span></p>
-                                <h2>Grand Total <span><?php echo $tot ?></span></h2>
+                                <p>Sub Total <span><?php echo $extot ?>DT</span></p>
+                                <h2>Grand Total <span><?php echo $tot ?>DT</span></h2>
                             </div>
+                            <form method="POST" action="ajoutertrans.php">
                             <div class="cart-summary-button">
-                                <button class="checkout-btn">Checkout</button>
+                                <button class="checkout-btn" type="submit">Payer</button>
+                                <input type="hidden" name="alo" value="<?php echo $tot ?>">
+                                <a href="pdfc.php" class="btn center btn-circle hover-theme ml-50 mt-10 mr-30 mb-30">Imprimer</a>
+                         </div>
+                               
                             </div>
+                            </form>
                         </div>
+
                     </div>
 
                 </div>

@@ -119,6 +119,20 @@ function chercher($nom){
 		}
 	}
 
+	function countp(){
+		$sql="SELECT count(*) a from wish ";
+		$db=config::getConnexion();
+		try{
+			$req=$db->prepare($sql);
+			$req->execute();
+			$x=$req->fetchALL();
+			return $x;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+	}
+
 
 
 

@@ -2,8 +2,7 @@
 include "../entities/wish.php";
 include "../core/wishC.php";
 session_start();
-$_SESSION['id']="3";
-$_SESSION['username']="soulah";
+
 $zulu=1;
 
 		$wishC=new wishC();

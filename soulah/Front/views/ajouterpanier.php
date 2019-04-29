@@ -2,10 +2,17 @@
 include "../entities/panier.php";
 include "../core/panierC.php";
 session_start();
-$_SESSION['id']="3";
-$_SESSION['username']="soulah";
 $panierC=new panierC();
+
+   if(!isset($_SESSION['id']) and !isset($_SESSION['username']) ){
+   	echo "<script type='text/javascript'>";
+            echo "alert('Please sign in ');";
+            echo "</script>";
+                echo "<META http-equiv='refresh' content='0;URL=login.html'>";}
+else{
 $x=$panierC->count($_GET['nom']);
+
+
 foreach($x as $row){
 $y=$row['a'];
 	 $refe=$_GET['refe'];
@@ -58,6 +65,6 @@ echo "<META http-equiv='refresh' content='0;URL=product-detail.php?id=$refe'>";
 }
 }
 
-
+}
 
 ?>

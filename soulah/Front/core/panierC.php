@@ -74,6 +74,22 @@ class panierC
 	}
 
 
+
+	function deleteall()
+	{
+
+		$sql="DELETE FROM cart ";
+		$db = config::getConnexion();
+        $req=$db->prepare($sql);
+		try{
+            $req->execute();
+          //header('Location: panierBE.php');
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+	}
+
 	function modifierpanier($quantite,$total,$idp)
 	{
 
@@ -201,6 +217,21 @@ try{
         catch (Exception $e){
             echo " Erreur ! ".$e->getMessage();
    
+        }
+	}
+
+
+	function countp(){
+		$sql="SELECT count(*) a from cart ";
+		$db=config::getConnexion();
+		try{
+			$req=$db->prepare($sql);
+			$req->execute();
+			$x=$req->fetchALL();
+			return $x;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
         }
 	}
 	

@@ -37,6 +37,20 @@ $maction='afficher';
 
    }
 
+
+ require_once  '../config.php';
+$db=config::getConnexion();
+  
+   $req1= $db->query("SELECT count(idc) as total ,valeur FROM coupon GROUP by valeur   ");
+   $req1->execute();
+                $liste= $req1->fetchALL(PDO::FETCH_OBJ);
+                    $req2= $db->query("SELECT count(idc) as nb FROM coupon " );
+    $nb = $req2->fetch();
+$dataPoints = array();
+foreach ($liste as $tache) {
+    $dataPoints[] = array('y' => $tache->total , 'label' => $tache->valeur);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,6 +83,30 @@ $maction='afficher';
 
     <!--Morris css-->
     <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+
+    <script>
+window.onload = function() {
+ 
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title: {
+        text: "Coupon par valeur"
+    },
+    subtitles: [{
+        //text: "November 2017"
+    }],
+    data: [{
+        type: "pie",
+        yValueFormatString: "#,##",
+        indexLabel: "Valeur : {label} ({y} Produit)",
+        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+    }]
+});
+chart.render();
+ 
+}
+</script>
 
 
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -107,7 +145,7 @@ $maction='afficher';
 
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
-          ['Opening Move', 'Percentage'],
+          [' Client', 'Total'],
            <?php
         foreach ($aloha as $key ) {
        echo "['".$key['nomcl']."', '".$key['total']."'],";
@@ -117,11 +155,11 @@ $maction='afficher';
         ]);
 
         var options = {
-          title: 'Chess opening moves',
+          title: 'Total des achats par clients',
           width: 900,
           legend: { position: 'none' },
-          chart: { title: 'Chess opening moves',
-                   subtitle: 'popularity by percentage' },
+          chart: { title: 'Total des achats par clients',
+                   subtitle: '' },
           bars: 'horizontal', // Required for Material Bar Charts.
           axes: {
             x: {
@@ -624,7 +662,8 @@ $maction='afficher';
         <div class="card-body">
             <div id="chart_bar" class="overflow-hidden">
               
-                <div id="donutchart" style="width: 500px; height: 500px;"></div>
+             <!--   <div id="donutchart" style="width: 500px; height: 500px;"></div>-->
+                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
             </div>
         </div>
@@ -795,6 +834,10 @@ $maction='afficher';
 
     <script src="assets/js/editable.js"></script>
     <script src="assets/js/datatable.js"></script>
+
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 
     <!--DataTables js-->
     <script src="assets/plugins/Datatable/js/jquery.dataTables.js"></script>

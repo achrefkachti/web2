@@ -20,8 +20,11 @@ $tot=0;
  $extot=0;
 $produit1C=new produitC();
 $listeProduits=$produit1C->afficherProduits();
-$_SESSION['id']="3";
-$_SESSION['username']="soulah";
+$nb=$panierC->countp();
+foreach ($nb as $key ) {
+    $foxtrot=$key['a'];
+}
+
 $maction='something';
 
 //var_dump($listeEmployes->fetchAll());
@@ -95,10 +98,24 @@ $maction='something';
 
                 <div class="col order-2 order-xs-2 order-lg-12 mt-10 mb-10">
                     <!-- Header Account Links Start -->
+
+<?PHP 
+                        if (isset($_SESSION['username']) && isset($_SESSION['password'])) 
+{  ?>
                     <div class="header-account-links">
+                        <a href="#"><i class="icofont icofont-user-alt-7"></i> <span><?php echo $_SESSION['username']; ?></span></a>
+                        <a href="logout.php"><i class="icofont icofont-login d-none"></i> <span>Logout</span></a>
+                    </div><!-- Header Account Links End -->
+<?PHP } ?>
+
+
+<?PHP if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) 
+                        { ?>
+                               <div class="header-account-links">
                         <a href="register.html"><i class="icofont icofont-user-alt-7"></i> <span>my account</span></a>
                         <a href="login.html"><i class="icofont icofont-login d-none"></i> <span>Login</span></a>
-                    </div><!-- Header Account Links End -->
+                    </div>
+                            <?PHP } ?>
                 </div>
 
             </div>
@@ -114,7 +131,7 @@ $maction='something';
                     <!-- Logo Start -->
                     <div class="header-logo">
                         <a href="index.php">
-                          <img id="logo1" src="assets/images/log.png" alt="Ariana Scooters">
+                          <img src="assets/images/log.gif" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
                         </a>
@@ -132,8 +149,9 @@ $maction='something';
                                    
                                 </li>
                                 <li class="menu-item-has-children"><a href="shop.php">Shop</a>
-                                    <ul class="sub-menu">
+                                   <ul class="sub-menu">
                                         <li class=""><a href="scooter.php">Scooter</a>
+                               
                                         </li>
                                         <li class=""><a href="velo.php">Velo</a>
                                         </li>
@@ -145,10 +163,9 @@ $maction='something';
                                 </li>
                                 <li class="menu-item-has-children"><a href="#">EVENEMENTS</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Column One</a>
+                                        <li><a href="afficher_event.php">A venir</a>
                                             <ul>
-                                                <li><a href="about-us.html">About us</a></li>
-                                                <li><a href="banner.html">Banner</a></li>
+                                                <li><a href="galerie.php">Galerie</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -175,7 +192,10 @@ $maction='something';
                         <!-- Wishlist -->
                         <a href="wishlist.php" class="header-wishlist"><i class="ti-heart"></i> </a>
                         <!-- Cart -->
-                        <a href="cart.php" class="header-cart"><i class="ti-shopping-cart"></i></a>
+                        <a href="cart.php" class="header-cart"><i class="ti-shopping-cart"></i>
+                          <span class="number"><?php echo $foxtrot;?></span>
+
+                        </a>
 
                     </div><!-- Header Shop Links End -->
                 </div>
@@ -246,35 +266,7 @@ $maction='something';
 <div class="cart-overlay"></div>
 
 <!-- Page Banner Section Start -->
-<div class="page-banner-section section">
-    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
 
-        <!-- Page Banner -->
-        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
-            <div class="page-banner">
-                <h1>Product Details</h1>
-                <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
-                <div class="breadcrumb">
-                    <ul>
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">Product Details</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Banner -->
-        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
-            <div class="banner"><a href="#"><img src="assets/images/banner/banner-15.jpg" alt="Banner"></a></div>
-        </div>
-
-        <!-- Banner -->
-        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
-            <div class="banner"><a href="#"><img src="assets/images/banner/banner-14.jpg" alt="Banner"></a></div>
-        </div>
-
-    </div>
-</div><!-- Page Banner Section End -->
 
 <!-- Single Product Section Start -->
 <div class="product-section section mt-90 mb-90">
