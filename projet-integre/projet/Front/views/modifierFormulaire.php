@@ -190,7 +190,7 @@ else {  ?>
                 <div class="col mt-15 mb-15">
                     <!-- Logo Start -->
                     <div class="header-logo">
-                        <a href="index.php">
+                        <a href="indexach.php">
                           <img  src="assets/images/log.gif" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
@@ -205,7 +205,7 @@ else {  ?>
                         <nav>
                             <ul>
 
-                                <li class="active"><a href="index.php">HOME</a>
+                                <li class="active"><a href="indexach.php">HOME</a>
                                    
                                 </li>
                                 <li class="menu-item-has-children"><a href="shop.php">Shop</a>
@@ -410,7 +410,7 @@ foreach($result as $row){
                                 
                                 <div class="col-md-6 col-12 mb-30">
                                     <label for="email_address">EMAIL</label>    
-                                    <input type="email" id="Email"  placeholder="Email" value="<?php echo $_SESSION['l']; ?>" name="email" onblur="verifMail(this)" value="<?PHP echo $email?>" readonly>
+                                    <input type="email" id="Email"  placeholder="Email"  name="email" onblur="verifMail(this)" value="<?PHP echo $email?>" readonly>
                                 </div>
                                 
                                 <div class="col-md-6 col-12 mb-30">

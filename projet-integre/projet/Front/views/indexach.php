@@ -225,11 +225,11 @@ else if (!isset($_SESSION['username']) && !isset($_SESSION['password']))  {  ?>
                                 </li>
                                 <li class="menu-item-has-children active" ><a href="blog-3-column.html">SAV</a>
                                     <ul class="sub-menu">
-                                        <li><a href="retour.html">Politique du retour</a></li>
-                                        <li><a href="loginach.html">Ajouter Réclamation</a></li>
-                                        <li><a href="loginach.html">Afficher vos Réclamations</a></li>
-                                        <li><a href="loginach.html">Afficher les Suivies</a></li>
-                                        <li><a href="ajouterAvis1.php">Vos Avis</a></li>
+                                        <li><a href="retour.php">Politique du retour</a></li>
+                                        <li><a href="ajouterFormulaire.php">Ajouter Réclamation</a></li>
+                                        <li><a href="afficherFormulaire.php">Afficher vos Réclamations</a></li>
+                                        <li><a href="afficherSuivie.php">Afficher les Suivies</a></li>
+                                        <li><a href="ajouterAvis.php">Vos Avis</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="aboutus.html">ABOUT US</a></li>

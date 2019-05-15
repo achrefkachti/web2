@@ -183,7 +183,7 @@ else {  ?>
                 <div class="col mt-15 mb-15">
                     <!-- Logo Start -->
                     <div class="header-logo">
-                        <a href="index.php">
+                        <a href="indexach.php">
                           <img  src="assets/images/log.gif" alt="Ariana Scooters">
 
                       <!--      <img class="theme-dark" src="assets/images/log.png" alt="Ariana Scooters"> -->
@@ -198,7 +198,7 @@ else {  ?>
                         <nav>
                             <ul>
 
-                                <li class="active"><a href="index.php">HOME</a>
+                                <li class="active"><a href="indexach.php">HOME</a>
                                    
                                 </li>
                                 <li class="menu-item-has-children"><a href="shop.php">Shop</a>
@@ -227,9 +227,9 @@ else {  ?>
                                     <ul class="sub-menu">
                                         <li><a href="retour.php">Politique du retour</a></li>
                                         <li><a href="ajouterFormulaire.php">Ajouter Réclamation</a></li>
-                                        <li class="active"><a href="afficherFormulaire.php">Afficher vos Réclamations</a></li>
+                                        <li><a href="afficherFormulaire.php">Afficher vos Réclamations</a></li>
                                         <li><a href="afficherSuivie.php">Afficher les Suivies</a></li>
-                                        <li><a href="ajouterAvis.php">Vos Avis</a></li>
+                                        <li  class="active"><a href="ajouterAvis.php">Vos Avis</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="aboutus.html">ABOUT US</a></li>

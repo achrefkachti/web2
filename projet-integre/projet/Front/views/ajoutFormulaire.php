@@ -24,15 +24,7 @@ else if (strlen($_POST['teleph'])!=8)
 }
 
 
-else if ( ($_POST['email'])!= $_SESSION['l'] ) 
-{
-	?>
-	<script type="text/javascript">
-		alert ("Verifiez votre Adresse Email svp")
-	</script>
-	<?PHP
-	echo "<META http-equiv='refresh' content='0;URL=ajouterFormulaire.php'>";
-}
+
 
 
 
@@ -47,8 +39,13 @@ var_dump($employe1);
 //Partie3
 $formulaire1C=new FormulaireC();
 $formulaire1C->ajouterFormulaire($formulaire1);
+//session_start (); 
+$listmail=$formulaire1C->recupmail($_SESSION['username']);
+foreach ($listmail as $row) {
+   $listeFormulaires=$formulaire1C->afficherForm($row['adresse']);
+}
 	
-											$to=$_SESSION['l'];
+											$to=$row['adresse'];
 											$sujet='Votre demande a été prise en compte. Nous vous répondrons.';
 											//$texte=$_POST['texte'];
 											$header='From :  test@gmail.com';
