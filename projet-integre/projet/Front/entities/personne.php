@@ -2,30 +2,40 @@
 
 class Livraison
 {
-
+private $username;
 	private $nomC;
     private $mailC;
     private $telC;
-    private $card;
-    private $date;
-    private $code;
     
-    function __construct($nomC,$mailC,$telC,$card,$code)
+    private $date;
+    
+    private $town;
+    private $state;
+    private $zip;
+    
+    function __construct($username,$nomC,$mailC,$telC,$town,$state,$zip)
     {
-    	$this->nomC=$nomC;
+    	$this->username=$username;
+        $this->nomC=$nomC;
         $this->mailC=$mailC;
         $this->telC=$telC;
-         $this->card=$card;
-        $this->code=$code;
+       
+        
+        $this->town=$town;
+        $this->state=$state;
+        $this->zip=$zip;
        
         
     }
-
+function getusername() {return $this->username ;}
     function getnom() {return $this->nomC ;}
     function getemailC() {return $this->mailC;}
     function gettelC() {return $this->telC;}
-function getcard() { return $this->card;}
-function getcode() {return $this->code;}
+
+
+function gettown() {return $this->town;}
+function getstate() {return $this->state;}
+function getzip() {return $this->zip;}
 }
 
 ?>

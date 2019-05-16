@@ -6,7 +6,7 @@ class LivraisonC
 {
 	function ajouterLivraison($Livraison)
 	{
-		$sql="insert into livraison (nomC,mailC,telC,card,code) values (:nomC,:mailC,:telC,:card,:code)";
+		$sql="insert into livraison (username,nomC,mailC,telC,town,state,zip) values (:username,:nomC,:mailC,:telC,:town,:state,:zip)";
 		$db=config7::getConnexion();
 		try
 		{
@@ -14,16 +14,22 @@ class LivraisonC
             $nomC= $Livraison->getnom();
 	     	$mailC=$Livraison->getemailC();
 	     	$telC=$Livraison->gettelC();
-            $card=$Livraison->getcard();
-            $code=$Livraison->getcode();
+            $username=$Livraison->getusername();
+             $town=$Livraison->gettown();
+            $state=$Livraison->getstate();
+            $zip=$Livraison->getzip();
+	    	$req->bindValue(':username',$username);
 
 	    	$req->bindValue(':nomC',$nomC);
 	    	$req->bindValue(':mailC', $mailC);	
 	      	$req->bindValue(':telC',$telC);
-	    	$req->bindValue(':card',$card);
-	    	$req->bindValue(':code',$code);
-
+	    	
+	    	
+            $req->bindValue(':town',$town);
+            $req->bindValue(':state',$state);
+            $req->bindValue(':zip',$zip);
 	    	$req->execute();
+	    	echo $zip;
 	    	echo 'ok';
         }
     

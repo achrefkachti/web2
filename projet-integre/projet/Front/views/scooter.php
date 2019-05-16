@@ -135,15 +135,16 @@ function filterTable($query)
 
   $clientC=new clientC();
   $carteC=new carteC();
-    $result=$clientC->recherchercd($_SESSION['username']);
-    $result1=$carteC->recherchercr($_SESSION['username']);
+    
     
     
 
 
 
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) 
-{  ?>
+{ $result=$clientC->recherchercd($_SESSION['username']);
+    $result1=$carteC->recherchercr($_SESSION['username']); 
+ ?>
    <div class="header-account-links">
    <a href="edit.php"><i class= "icofont icofont-user-alt-7" aria-hidden="true"></i><?php echo $_SESSION['username']; ?><span> </span></a>
 

@@ -368,7 +368,7 @@ else if (!isset($_SESSION['username']) && !isset($_SESSION['password']))  {  ?>
                            <!-- Billing Address -->
                            <div   id="billing-form" class="mb-40">
                                <h4 class="checkout-title">Billing Address</h4>
-                               <form id="form"action="ajouter_livraison.php" class="checkout-form"  onsubmit="return checkforblank()" >
+                                    <form method="GET" id="form" action="ajouter_livraison.php" class="checkout-form"  onsubmit="return checkforblank()" >
 
                                <div class="row">
 
@@ -439,7 +439,7 @@ else if (!isset($_SESSION['username']) && !isset($_SESSION['password']))  {  ?>
 
             <!-- Banner -->
             <div class="col-12">
-                <div class="banner"><a href="home.php"><img id="b" src="assets/images/banner/banner-2.jpg"  alt="Banner"></a></div>
+                <div class="banner"><a href="home.php"><img id="b" src="assets/images/banner/"  alt="Banner"></a></div>
             </div>
 
         </div>
