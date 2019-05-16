@@ -13,7 +13,7 @@ if(isset($_POST['username']) && isset($_POST['nom']) && isset($_POST['prenom']) 
   $carte1c->ajouterCarte($carte1);
   $clientc=new clientC();
   $clientc->setcf($_POST['username']);
-echo "<META http-equiv='refresh' content='0;URL=pdf_event.php'>";
+echo "<META http-equiv='refresh' content='0;URL=demande_carte.php'>";
 
 }
 else {

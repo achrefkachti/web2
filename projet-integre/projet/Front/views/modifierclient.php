@@ -129,7 +129,7 @@ if($row['confirme']==0 ) {?>
 <?php } ?>
 <?php if($row['confirme']==1) {?>
 <div class="header-account-links">
- <a href="pdf_eventt.php"><i class="far fa-id-card"></i> <span>Confirmed</span></a>
+ <a href="confirme.php"><i class="far fa-id-card"></i> <span>Confirmed</span></a>
  </div>
 <?php } }?>
 <?php 
@@ -320,26 +320,19 @@ else {  ?>
         <!-- Page Banner -->
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
-                <h1>Register</h1>
-                <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
+                <h1>Retour</h1>
+                
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">Register</a></li>
+                        <li><a href="index.php">Acceuil</a></li>
+                        
                     </ul>
                 </div>
             </div>
         </div>
 
         <!-- Banner -->
-        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
-            <div class="banner"><a href="#"><img src="assets/images/banner/banner-15.jpg" alt="Banner"></a></div>
-        </div>
-
-        <!-- Banner -->
-        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
-            <div class="banner"><a href="#"><img src="assets/images/banner/banner-14.jpg" alt="Banner"></a></div>
-        </div>
+        
 
     </div>
 </div><!-- Page Banner Section End -->
@@ -354,7 +347,7 @@ else {  ?>
                 <div class="ee-register">
                     
                     <h3>Your Profile</h3>
-                    <p>You can edit your informations or Desactivate your account .</p>
+                    <p>You can edit your informations here .</p>
                   
                     <!-- Register Form -->
   <?PHP
@@ -580,7 +573,7 @@ if (isset($_POST['modifier'])){
 
 <!-- JS
 ============================================ -->
-<script src="assets/js/modifcl.js">
+<script src="js/modifcl.js">
    </script>
 <!-- jQuery JS -->
 <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>

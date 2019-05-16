@@ -1,5 +1,14 @@
-<?php
+<?php include "../entities/carte.php";
+include "../core/carteC.php";
+include "../entities/client.php";
+include "../core/clientC.php";
+include "../core/pictureC.php";
 session_start();
+$picture1C=new pictureC();
+$listepictures=$picture1C->afficherpictures();
+include "../core/commentC.php";
+$commentC=new commentC();
+$listecomments=$commentC->affichercomments();
 include "../entities/produit.php";
 include "../core/produitC.php";
 include "../entities/panier.php";
@@ -9,10 +18,8 @@ include "../core/couponC.php";
 include "../core/transC.php";
 include "../core/categorieC.php";
 include "../core/commentaireC.php";
-include "../entities/carte.php";
-include "../core/carteC.php";
-include "../entities/client.php";
-include "../core/clientC.php";
+
+
 $panierC=new panierC();
 $listepanier=$panierC->afficherprod();
 
@@ -22,10 +29,10 @@ $produit1C=new produitC();
 $listeProduits1=$produit1C->afficherProduits1();
 
 $categorie1C=new categorieC();
-$listeCategories=$categorie1C->afficherCategories();
-?>
+$listeCategories=$categorie1C->afficherCategories();?>
 <!doctype html>
 <html class="no-js" lang="en">
+
 
 <head>
     <meta charset="utf-8">
@@ -301,10 +308,6 @@ else {  ?>
     </div>     
 
 </div><!-- Mini Cart Wrap End -->
-
-<!-- Cart Overlay -->
-<div class="cart-overlay"></div>
-
 <!-- Page Banner Section Start -->
 <div class="page-banner-section section">
     <div class="page-banner-wrap row row-0 d-flex align-items-center ">
@@ -312,97 +315,59 @@ else {  ?>
         <!-- Page Banner -->
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
-                <h1>Retour</h1>
-              
+                <h1 >Confirmation </h1>
+               
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="index.php">Acceuil</a></li>
+                        <li><a href="index.php">acceuil</a></li>
                         
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Banner -->
-        
+       
+
     </div>
 </div><!-- Page Banner Section End -->
-
-<!-- Register Section Start -->
-<div class="register-section section mt-90 mb-90">
+<!-- Product Section Start -->
+<div class="product-section section mt-90 mb-90">
     <div class="container">
         <div class="row">
-          
-            <!-- Register -->
-            <div class="col-md-6 col-12 d-flex">
-                <div class="ee-register">
-                    
-                    <h3>Edit your card</h3>
-                    <p>E&E provide how all this mistaken idea of denouncing pleasure and sing pain born an will give you a complete account of the system, and expound</p>
-                  
-                    <!-- Register Form -->
-  
-
-                    <form  name="f" method="get" action="modifiercarte.php">
-                       <div class="row">
-
-                            <div class="col-12 mb-30"><input type="text"  name="username" value="<?PHP echo $_SESSION['username'] ?>" readonly></div>
-                            
-                            <div class="col-12">
-                                                <input class="btn btn-primary btn-block"  type="submit" name="modifier" value="edit"></div>
+           
+            <div class="col-12">
                 
-                        </div> <br><br>
-                        
-
-                                                                     
-  
-  
-       </form>
-                </div>
-            </div>
-     
-
-            
-            <!-- Account Image -->
-            <div class="col-md-5 col-12 d-flex">
                 
-                <div class="ee-account-image">
-                    <h3>Desactivate your card</h3>
-                    
-                   <form  name="f" method="get" action="supprimercarte.php">
-                       <div class="row">
-                            
-                            <div class="col-12">
-                                                <input class="btn btn-primary btn-block"  type="submit" name="supprimer" value="Desactivate"></div>
                 
+                <!-- Shop Product Wrap Start -->
+                <!-- Shop Product Wrap Start -->
+               <!--row open-->
+                            <div class="row">
+                            <div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
+                               <div class="app-content">
+                    <section class="section">
+
+                        <!--page-header open-->
+                        <div class="page-header">
+                            <h4>Carte confirmée !  vous pouvez passer chez nous pour prendre votre carte de fidélité.</h4>
                         </div>
-                   
-                </div>
+                        
+                                            
+                                            <a class="btn btn-info mt-2 mb-2" href="index.php">Retour</a>      
+
+            </div>
+                            </div>
+                        <!--row closed-->
+                
+                
                 
             </div>
             
         </div>
     </div>
+</div><!-- Feature Product Section End -->
 
-</div><!-- Register Section End -->
 
-<!-- Brands Section Start -->
-<div class="brands-section section mb-90">
-    <div class="container">
-        <div class="row">
-            
-            <!-- Brand Slider Start -->
-            <div class="brand-slider col">
-                <div class="brand-item col"><img src="assets/images/brands/brand-1.png" alt="Brands"></div>
-                <div class="brand-item col"><img src="assets/images/brands/brand-2.png" alt="Brands"></div>
-                <div class="brand-item col"><img src="assets/images/brands/brand-3.png" alt="Brands"></div>
-                <div class="brand-item col"><img src="assets/images/brands/brand-4.png" alt="Brands"></div>
-                <div class="brand-item col"><img src="assets/images/brands/brand-5.png" alt="Brands"></div>
-            </div><!-- Brand Slider End -->
-            
-        </div>
-    </div>
-</div><!-- Brands Section End -->
 
 <!-- Subscribe Section Start -->
 <div class="subscribe-section section bg-gray pt-55 pb-55">
@@ -421,16 +386,16 @@ else {  ?>
             <!-- Mailchimp Subscribe Form Start -->
             <div class="col-lg-6 col-12 mb-15 mt-15">
                 
-				<form id="mc-form" class="mc-form subscribe-form" >
-					<input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email here" />
-					<button id="mc-submit">subscribe</button>
-				</form>
-				<!-- mailchimp-alerts Start -->
-				<div class="mailchimp-alerts text-centre">
-					<div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-					<div class="mailchimp-success"></div><!-- mailchimp-success end -->
-					<div class="mailchimp-error"></div><!-- mailchimp-error end -->
-				</div><!-- mailchimp-alerts end -->
+                <form id="mc-form" class="mc-form subscribe-form" >
+                    <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email here" />
+                    <button id="mc-submit">subscribe</button>
+                </form>
+                <!-- mailchimp-alerts Start -->
+                <div class="mailchimp-alerts text-centre">
+                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                    <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                    <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                </div><!-- mailchimp-alerts end -->
                 
             </div><!-- Mailchimp Subscribe Form End -->
             
@@ -553,8 +518,7 @@ else {  ?>
 
 <!-- JS
 ============================================ -->
-<script src="assets/js/client.js">
-   </script>
+
 <!-- jQuery JS -->
 <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
 <!-- Popper JS -->
@@ -571,5 +535,5 @@ else {  ?>
 </body>
 
 
-<!-- Mirrored from demo.devitems.com/ee/ee-v1/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 18:48:35 GMT -->
+<!-- Mirrored from demo.devitems.com/ee/ee-v1/shop-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 18:50:29 GMT -->
 </html>

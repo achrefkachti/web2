@@ -12,6 +12,7 @@ include "../config.php";
 
 <!-- Mirrored from demo.devitems.com/ee/ee-v1/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 18:48:34 GMT -->
 <head> <script >
+
     function verifcin(champ)
 {   var c = f.cin.value;
     
@@ -298,27 +299,19 @@ else { ?>
         <!-- Page Banner -->
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
-                <h1>Register</h1>
-                <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
+                <h1>Retour</h1>
+                
                 <div class="breadcrumb">
                     <ul>
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">Register</a></li>
+                        <li><a href="index.php">Acceuil</a></li>
+                        
                     </ul>
                 </div>
             </div>
         </div>
 
         <!-- Banner -->
-        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
-            <div class="banner"><a href="#"><img src="assets/images/banner/banner-15.jpg" alt="Banner"></a></div>
-        </div>
-
-        <!-- Banner -->
-        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
-            <div class="banner"><a href="#"><img src="assets/images/banner/banner-14.jpg" alt="Banner"></a></div>
-        </div>
-
+        
     </div>
 </div><!-- Page Banner Section End -->
 
@@ -332,7 +325,7 @@ else { ?>
                 <div class="ee-register">
                     
                     <h3>Envoyer une demande pour avoir une carte de fidélité</h3>
-                    <p>E&E provide how all this mistaken idea of denouncing pleasure and sing pain born an will give you a complete account of the system, and expound</p>
+                    <p></p>
                     
                     <!-- Register Form -->
                     <form  name="f" method="POST" action="ajoutcarte.php">
@@ -530,7 +523,7 @@ else { ?>
 
 <!-- JS
 ============================================ -->
-<script src="assets/js/client.js">
+<script src="js/carte.js">
    </script>
 <!-- jQuery JS -->
 <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>

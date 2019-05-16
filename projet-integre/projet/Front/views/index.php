@@ -130,7 +130,7 @@ if($row['confirme']==0 ) {?>
 <?php } ?>
 <?php if($row['confirme']==1) {?>
 <div class="header-account-links">
- <a href="pdf_eventt.php"><i class="far fa-id-card"></i> <span>Confirmed</span></a>
+ <a href="confirme.php"><i class="far fa-id-card"></i> <span>Confirmed</span></a>
  </div>
 <?php } }?>
 <?php 
@@ -160,8 +160,9 @@ if($row['cf']==0) {?>
 else if (!isset($_SESSION['username']) && !isset($_SESSION['password']))  {  ?>
      <div class="header-account-links">
                         <a href="register.html"><i class="icofont icofont-user-alt-7"></i> <span>my account</span></a>
-                        <a href="login.html"><i class="icofont icofont-login d-none"></i> <span>Login</span></a>
-                    </div>
+                        </div>
+                        
+                    
     
     
       <?php
